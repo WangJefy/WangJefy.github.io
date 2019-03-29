@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="随笔,">
+  <meta name="keywords" content="Vue.js,">
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="本博客使用Hexo搭建完成~ 快速入门创建新文章1$ hexo new &quot;My New Post&quot; 启动本地服务1$ hexo server">
-<meta name="keywords" content="随笔">
+<meta name="description" content="新建实例(Creating a Vue Instance) 每个Vue应用都是通过用 Vue 函数创建一个新的Vue实例开始的。  123var vm = new Vue(&amp;#123;    // 选项&amp;#125;)  当创建一个Vue实例时，可以传入一个选项对象(options object)。而如何使用这些选项来创建你想要的行为，正是该文档的核心内容。完整的选项列表可参考 API文档。 一个V">
+<meta name="keywords" content="Vue.js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写文备注">
-<meta property="og:url" content="http://yoursite.com/2019/01/08/写文备注                                                                                                                                                                                                  hello-world/index.html">
+<meta property="og:title" content="Vue Instance">
+<meta property="og:url" content="http://yoursite.com/2019/03/22/Vue-Instance/index.html">
 <meta property="og:site_name" content="人模狗样的人儿">
-<meta property="og:description" content="本博客使用Hexo搭建完成~ 快速入门创建新文章1$ hexo new &quot;My New Post&quot; 启动本地服务1$ hexo server">
+<meta property="og:description" content="新建实例(Creating a Vue Instance) 每个Vue应用都是通过用 Vue 函数创建一个新的Vue实例开始的。  123var vm = new Vue(&amp;#123;    // 选项&amp;#125;)  当创建一个Vue实例时，可以传入一个选项对象(options object)。而如何使用这些选项来创建你想要的行为，正是该文档的核心内容。完整的选项列表可参考 API文档。 一个V">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-22T09:02:07.772Z">
+<meta property="og:image" content="https://cn.vuejs.org/images/lifecycle.png">
+<meta property="og:updated_time" content="2019-03-28T00:42:48.205Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="写文备注">
-<meta name="twitter:description" content="本博客使用Hexo搭建完成~ 快速入门创建新文章1$ hexo new &quot;My New Post&quot; 启动本地服务1$ hexo server">
+<meta name="twitter:title" content="Vue Instance">
+<meta name="twitter:description" content="新建实例(Creating a Vue Instance) 每个Vue应用都是通过用 Vue 函数创建一个新的Vue实例开始的。  123var vm = new Vue(&amp;#123;    // 选项&amp;#125;)  当创建一个Vue实例时，可以传入一个选项对象(options object)。而如何使用这些选项来创建你想要的行为，正是该文档的核心内容。完整的选项列表可参考 API文档。 一个V">
+<meta name="twitter:image" content="https://cn.vuejs.org/images/lifecycle.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/08/写文备注                                                                                                                                                                                                  hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/22/Vue-Instance/">
 
 
 
 
 
-  <title>写文备注 | 人模狗样的人儿</title>
+  <title>Vue Instance | 人模狗样的人儿</title>
   
 
 
@@ -297,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/08/写文备注                                                                                                                                                                                                  hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/Vue-Instance/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="人模狗样的人儿">
@@ -314,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">写文备注</h1>
+          <h1 class="post-title" itemprop="name headline">Vue Instance</h1>
         
 
         <div class="post-meta">
@@ -326,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-08T19:42:46+08:00">
-                2019-01-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T19:28:47+08:00">
+                2019-03-22
               </time>
             
 
@@ -349,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
                   </a>
                 </span>
 
@@ -386,13 +388,50 @@
       
 
       
-        <p>本博客使用<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>搭建完成~</p>
-<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<h3 id="启动本地服务"><a href="#启动本地服务" class="headerlink" title="启动本地服务"></a>启动本地服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+        <h2 id="新建实例-Creating-a-Vue-Instance"><a href="#新建实例-Creating-a-Vue-Instance" class="headerlink" title="新建实例(Creating a Vue Instance)"></a>新建实例(Creating a Vue Instance)</h2><ol>
+<li>每个Vue应用都是通过用 <code>Vue</code> 函数创建一个新的Vue实例开始的。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="comment">// 选项</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>当创建一个Vue实例时，可以传入一个<strong>选项对象(options object)</strong>。而如何使用这些选项来创建你想要的行为，正是该文档的核心内容。完整的选项列表可参考 <a href="https://cn.vuejs.org/v2/api/#%E9%80%89%E9%A1%B9-%E6%95%B0%E6%8D%AE" target="_blank" rel="noopener">API文档</a>。</li>
+<li>一个Vue应用由一个通过 <code>new Vue</code> 创建的 <strong>根Vue实例(root Vue instance) </strong>，以及可选的、嵌套的、可复用的组件树组成。(A Vue application consists of a root Vue instance created with <code>new Vue</code> , optionally organized into a tree of nested, reusable components)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">根实例</span><br><span class="line">└─ TodoList</span><br><span class="line">   ├─ TodoItem</span><br><span class="line">   │  ├─ DeleteTodoButton</span><br><span class="line">   │  └─ EditTodoButton</span><br><span class="line">   └─ TodoListFooter</span><br><span class="line">      ├─ ClearTodosButton</span><br><span class="line">      └─ TodoListStatistics</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<h3 id="部署到远程服务器"><a href="#部署到远程服务器" class="headerlink" title="部署到远程服务器"></a>部署到远程服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><p>打开浏览器，输入 <a href="https://wangjefy.github.io/" target="_blank" rel="noopener">https://wangjefy.github.io/</a> </p>
+<ol start="4">
+<li>所有的Vue组件都是Vue实例，并且接受相同的选项对象(一些根实例特有的选项除外)(All Vue components are also Vue instance, and so accept the same options object [except for a few root-specific options])</li>
+</ol>
+<h2 id="数据与方法-Data-and-Methods"><a href="#数据与方法-Data-and-Methods" class="headerlink" title="数据与方法(Data and Methods)"></a>数据与方法(Data and Methods)</h2><ol>
+<li>当一个Vue实例被创建时，它向Vue的 <strong>响应式系统(reactivity system)</strong>  中加入了其 <code>data</code> 对象中能找到的所有属性。</li>
+<li>这些属性的值发生变化时，视图会匹配更新为新的值</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们的数据对象</span></span><br><span class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 该对象被加入到一个Vue实例中</span></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    data: data</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获得这个实例上的属性</span></span><br><span class="line"><span class="comment">// 返回源数据中对应的字段</span></span><br><span class="line">vm.a === data.a <span class="comment">// =&gt; true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置属性也会影响到原始数据</span></span><br><span class="line">vm.a = <span class="number">2</span></span><br><span class="line">data.a <span class="comment">// =&gt; 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 反之亦然</span></span><br><span class="line">data.a = <span class="number">3</span></span><br><span class="line">vm.a <span class="comment">// =&gt; 3</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>只有当实例被创建时 <code>data</code> 中存在的属性才是 <strong>响应式(reactive)</strong> 的，才能在数据改变时，重新渲染视图。也就是说 如果你添加一个新的属性(property)，比如</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vm.b = <span class="string">'hi'</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">那么对b的改动将不会触发任何视图的更新。</span></span><br><span class="line"><span class="comment">如果你知道你会在晚些时候，需要这个属性，但是一开始它为空或不存在，那么你仅需要设置一些初始值就可。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">data:&#123;</span><br><span class="line">    newTodoText: <span class="string">''</span>,</span><br><span class="line">    visitCount: <span class="number">0</span>,</span><br><span class="line">    hideCompletedTodos: <span class="literal">false</span>,</span><br><span class="line">    todos: [],</span><br><span class="line">    error: <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在1/2/3中唯一的例外是使用 <code>Object.freeze()</code> ，这会阻止修改现有的属性，也意味着响应系统无法再追踪变化。</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; foo &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 这里的 foo 不会更新 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"foo = 'bazz'"</span>&gt;</span></span><br><span class="line">        Change it </span><br><span class="line">    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    foo: <span class="string">'bar'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.freeze(obj)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: obj</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>除了1/2/3/4详述的 <strong>数据属性(data properties)</strong> ，Vue实例还暴露了一些有用的实例属性和方法，它们都有前缀 <code>$</code> ，以便与用户定义的属性区分开来。完整的实例属性和方法列表看参考 <a href="https://cn.vuejs.org/v2/api/#%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7" target="_blank" rel="noopener">API文档</a></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">"#example"</span>,</span><br><span class="line">    data: data</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">vm.$data === data <span class="comment">// =&gt; true</span></span><br><span class="line">vm.$el === <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>)  <span class="comment">// =&gt; true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// $watch 是一个实例方法</span></span><br><span class="line">vm.$watch(<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newValue, oldValue</span>)</span>&#123;</span><br><span class="line">   <span class="comment">// 这个回调将在 vm.a 变化后调用</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="实例生命周期钩子-Instance-Lifecycle-Hooks"><a href="#实例生命周期钩子-Instance-Lifecycle-Hooks" class="headerlink" title="实例生命周期钩子(Instance Lifecycle Hooks)"></a>实例生命周期钩子(Instance Lifecycle Hooks)</h2><ol>
+<li>每个Vue实例在被创建时都要经过一系列的初始化过程(a series of initialization steps)</li>
+<li>这个过程包含 设置数据监听(set up data observation)、编译模板(compile the template)、将实例挂载到DOM(mount the instance to the DOM)、并在数据变化时更新DOM等(update the DOM when data changes)</li>
+<li>同时在这个过程中也会运行一些叫做 <strong>生命周期钩子(Lifecycle Hooks)</strong> 的函数，给了用户在不同阶段添加自定义代码的机会。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 比如 `created` 钩子可以用来在一个实例被创建之后执行代码</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">        a: <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 用于在实例被创建之后执行代码</span></span><br><span class="line">    created: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">// *this 指向vm实例（以后出现 vm 都表示Vue实例</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'a is: '</span> + <span class="keyword">this</span>.a )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// =&gt; "a is: 1"</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>除了3提到的 <code>created</code> 钩子，还有 <code>mounted</code> 、 <code>updated</code> 和 <code>destroyed</code> 等会在实例生命周期的不同阶段被调用。</li>
+<li>生命周期钩子的 <code>this</code> 上下文指向调用它的Vue实例(All lifecycle hooks are called with thier <code>this</code> context pointing to the Vue instance invoking it.)</li>
+<li>非常重要的点如下</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Note: 不要在选项属性或回调函数上使用箭头函数(https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)</span><br><span class="line">(Don&apos;t use arrow functions on an options property or callback)。</span><br><span class="line"></span><br><span class="line">比如 `created: () =&gt; console.log(this.a)` 或 </span><br><span class="line">`vm.$watch(&apos;a&apos;, newValue =&gt; this.myMethod())`</span><br><span class="line"></span><br><span class="line">因为箭头函数并没有`this`, `this`会作为变量一直向上词法作用域查找，直到找到位置，</span><br><span class="line">经常导致 `Uncaught TypeError: Cannot read property of undefined` 或 </span><br><span class="line">`Uncaught TypeError: this.myMethod is not a function` 之类的错误。</span><br></pre></td></tr></table></figure>
+<h2 id="生命周期图示"><a href="#生命周期图示" class="headerlink" title="生命周期图示"></a>生命周期图示</h2><p><img src="https://cn.vuejs.org/images/lifecycle.png" alt=""></p>
 
       
     </div>
@@ -419,7 +458,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/随笔/" rel="tag"># 随笔</a>
+            <a href="/tags/Vue-js/" rel="tag"># Vue.js</a>
           
         </div>
       
@@ -432,14 +471,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/01/08/vue入门/" rel="next" title="Vue入门">
+                <i class="fa fa-chevron-left"></i> Vue入门
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/08/vue入门/" rel="prev" title="Vue入门">
-                Vue入门 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/28/模板语法/" rel="prev" title="模板语法">
+                模板语法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -602,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速入门"><span class="nav-number">1.</span> <span class="nav-text">快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建新文章"><span class="nav-number">1.1.</span> <span class="nav-text">创建新文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动本地服务"><span class="nav-number">1.2.</span> <span class="nav-text">启动本地服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成静态文件"><span class="nav-number">1.3.</span> <span class="nav-text">生成静态文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到远程服务器"><span class="nav-number">1.4.</span> <span class="nav-text">部署到远程服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问"><span class="nav-number">1.5.</span> <span class="nav-text">访问</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新建实例-Creating-a-Vue-Instance"><span class="nav-number">1.</span> <span class="nav-text">新建实例(Creating a Vue Instance)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据与方法-Data-and-Methods"><span class="nav-number">2.</span> <span class="nav-text">数据与方法(Data and Methods)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例生命周期钩子-Instance-Lifecycle-Hooks"><span class="nav-number">3.</span> <span class="nav-text">实例生命周期钩子(Instance Lifecycle Hooks)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期图示"><span class="nav-number">4.</span> <span class="nav-text">生命周期图示</span></a></li></ol></div>
             
 
           </div>
