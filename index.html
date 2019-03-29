@@ -388,13 +388,21 @@
 
       
         
-          
-            <ol>
+          <ol>
 <li>操作元素的 <strong>class列表</strong> 和 <strong>内联样式</strong> 是数据绑定的一个常见需求。因为他们都是特性(attributes)，所以我们可以用 <code>v-bind</code> 处理他们——只需要通过表达式计算出 <strong>字符串结果</strong> 即可。</li>
-<li></li>
+<li>不过，字符串拼接麻烦且易错。因此，在将 <code>v-bind</code> 用于 <code>class</code> 和 <code>style</code> 时，Vue.js做了专门的增强。表达式结果除了 <strong>字符串</strong> 之外，还可以是 <strong>对象</strong> 或 <strong>数组</strong> </li>
 </ol>
-
-          
+<h2 id="绑定HTML-Class-Binding-HTML-Classes"><a href="#绑定HTML-Class-Binding-HTML-Classes" class="headerlink" title="绑定HTML Class(Binding HTML Classes)"></a>绑定HTML Class(Binding HTML Classes)</h2><h3 id="对象语法-Object-Syntax"><a href="#对象语法-Object-Syntax" class="headerlink" title="对象语法(Object Syntax)"></a>对象语法(Object Syntax)</h3><ol>
+<li>我们可以给 <code>v-bind:class</code> 传一个对象，以动态地切换 class</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:class</span>=<span class="string">"&#123; active: isActive &#125;"</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/29/Class与Style绑定/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
