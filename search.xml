@@ -1,9 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Node.js入门]]></title>
+    <url>%2F2019%2F03%2F30%2FNode-js%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[Node.js入门]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>Node.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Web Components入门]]></title>
+    <url>%2F2019%2F03%2F30%2FWeb-Components%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[Web Components入门]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Web Components</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[HTTP入门]]></title>
+    <url>%2F2019%2F03%2F30%2FHTTP%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[HTTP入门]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>HTTP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CSS入门]]></title>
+    <url>%2F2019%2F03%2F30%2FCSS%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[CSS入门]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[HTML入门]]></title>
+    <url>%2F2019%2F03%2F30%2FHTML%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[HTML入门]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JavaScript入门]]></title>
+    <url>%2F2019%2F03%2F30%2FJavaScript%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[入门]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[列表渲染(List Rendering)]]></title>
     <url>%2F2019%2F03%2F29%2F%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[用v-for把一个数组对应成一组元素(Mapping an Array to Elements with v-for) 我们用 v-for 指令根据一组 数组的项目列表 进行渲染(We can use the v-for directive to render a list of items based on an array)。 v-for 指令需要使用 item in items 形式的特殊语法，items 是源数据数组(the source data array)，item 是数组元素。 123&lt;ul id="example-1"&gt; &lt;li v-for="item in items"&gt; &#123;&#123; item.message &#125;&#125; &lt;/li&gt;&lt;/ul&gt; 123456789var example1 = new Vue(&#123; el: '#example-1', data: &#123; items: [ &#123; message: 'Foo' &#125;, &#123; message: 'Bar' &#125; ] &#125;&#125;) 结果： Foo Bar 在 v-for 块中，我们拥有对父作用域属性(parent scope properties)的完全访问权限。v-for 还支持一个可选的第二个参数为当前项的索引。 12345&lt;ul id="example-2"&gt; &lt;li v-for="(item, index) in items"&gt; &#123;&#123; parentMessage &#125;&#125; - &#123;&#123; index &#125;&#125; - &#123;&#123; item.message &#125;&#125; &lt;/li&gt;&lt;/ul&gt; 12345678910var example2 = new Vue(&#123; el: '#example-2', data: &#123; parentMessage: 'Parent', items: [ &#123; message: 'Foo' &#125;, &#123; message: 'Bar' &#125; ] &#125;&#125;) 结果： Parent - 0 - Foo Parent - 1 - Bar 你也可以用 of 替代 in 作为分隔符，因为它是最接近JavaScript迭代器的语法： 123&lt;div v-for="item of items"&gt; ...&lt;/div&gt; 一个对象的v-for(with an Object) 你可以用 v-for 通过 一个对象的属性(the properties of an object) 来迭代 12345&lt;ul id="v-for-object" class="demo"&gt; &lt;li v-for="value in object"&gt; &#123;&#123; value &#125;&#125; &lt;/li&gt;&lt;/ul&gt; 12345678910new Vue(&#123; el: '#v-for-object', data: &#123; object: &#123; firstName: 'John', lastName: 'Doe', age: 30 &#125; &#125;&#125;) 结果： John Doe 30 你也可以提供第二个参数即键名： 123&lt;div v-for="(value, key) in object"&gt; &#123;&#123; key &#125;&#125; : &#123;&#123; value &#125;&#125;&lt;/div&gt; 结果： 123firstName: JohnlastName: Doeage: 30 第三个参数为索引(index)： 123&lt;div v-for="(value, key, index) in object"&gt; &#123;&#123; index &#125;&#125;. &#123;&#123; key &#125;&#125; : &#123;&#123; value &#125;&#125;&lt;/div&gt; 结果： 1230. firstName:John1. lastName:Doe2. age: 30 在遍历对象(iterating over an object)时，是按 Object.keys() 的结果遍历，但是不能保证它的结果在不同的JavaScript引擎下是一致的。 key]]></content>
       <categories>
         <category>前端</category>
       </categories>
