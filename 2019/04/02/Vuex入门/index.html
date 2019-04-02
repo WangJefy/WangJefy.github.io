@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/header.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Vuex,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Vuex安装123npm install vuex --save# 或者yarn add vuex  Vuex 依赖 Promise ，如果你支持的浏览器并没有实现Promise(比如IE)，那么你可以使用一个polyfill的库，例如 es6-promise  安装 es6-promise 的方式是：  123npm install es6-promise --save # npm # 或者ya">
+<meta name="keywords" content="Vuex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vuex入门">
+<meta property="og:url" content="http://yoursite.com/2019/04/02/Vuex入门/index.html">
+<meta property="og:site_name" content="人模狗样的人儿">
+<meta property="og:description" content="Vuex安装123npm install vuex --save# 或者yarn add vuex  Vuex 依赖 Promise ，如果你支持的浏览器并没有实现Promise(比如IE)，那么你可以使用一个polyfill的库，例如 es6-promise  安装 es6-promise 的方式是：  123npm install es6-promise --save # npm # 或者ya">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://vuex.vuejs.org/flow.png">
+<meta property="og:image" content="https://vuex.vuejs.org/vuex.png">
+<meta property="og:updated_time" content="2019-04-02T14:43:26.775Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vuex入门">
+<meta name="twitter:description" content="Vuex安装123npm install vuex --save# 或者yarn add vuex  Vuex 依赖 Promise ，如果你支持的浏览器并没有实现Promise(比如IE)，那么你可以使用一个polyfill的库，例如 es6-promise  安装 es6-promise 的方式是：  123npm install es6-promise --save # npm # 或者ya">
+<meta name="twitter:image" content="https://vuex.vuejs.org/flow.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/02/Vuex入门/">
+
+
+
+
+
+  <title>Vuex入门 | 人模狗样的人儿</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	
+	<a href="https://github.com/WangJefy" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">人模狗样的人儿</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/Vuex入门/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="人模狗样的人儿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="人模狗样的人儿">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vuex入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T15:33:11+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Vuex安装"><a href="#Vuex安装" class="headerlink" title="Vuex安装"></a>Vuex安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install vuex --save</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line">yarn add vuex</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Vuex 依赖 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises" target="_blank" rel="noopener">Promise</a> ，如果你支持的浏览器并没有实现Promise(比如IE)，那么你可以使用一个polyfill的库，例如 <a href="https://github.com/stefanpenner/es6-promise" target="_blank" rel="noopener">es6-promise</a> </li>
+<li>安装 es6-promise 的方式是：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install es6-promise --save # npm </span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line">yarn add es6-promise</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 然后或者更进一步，将下列代码添加到你使用Vuex之前的一个地方</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'es6-promise/auto'</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="Vuex是什么-What-is-Vuex"><a href="#Vuex是什么-What-is-Vuex" class="headerlink" title="Vuex是什么(What is Vuex)"></a>Vuex是什么(What is Vuex)</h2><ol>
+<li>Vuex 是一个专为Vue.js应用程序开发的 <strong>状态管理模式</strong> (Vuex is a <strong>state management pattern + library</strong> for Vue.js applications)。</li>
+<li>它采用 <strong>集中式存储</strong> 管理应用的所有组件的 <strong>状态</strong> (It serves as a centralized store for all the components in an application)，并以相应的规则 <strong>来保证状态以一种可预测的方式</strong> 发生变化。</li>
+<li>Vuex也集成到Vue的官方调试工具 <a href="https://github.com/vuejs/vue-devtools" target="_blank" rel="noopener">devtools extension</a> ，提供了诸如零配置的time-travel调试、状态快照导入导出等高级调试功能。</li>
+</ol>
+<h3 id="什么是“状态管理模式”？"><a href="#什么是“状态管理模式”？" class="headerlink" title="什么是“状态管理模式”？"></a>什么是“状态管理模式”？</h3><p>让我们从一个简单的Vue计数应用开始：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="comment">// state</span></span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            count: <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// view</span></span><br><span class="line">    template: <span class="string">'&lt;div&gt;&#123;&#123; count &#125;&#125;&lt;/div&gt;'</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//actions</span></span><br><span class="line">    methods: &#123;</span><br><span class="line">        increment()&#123;</span><br><span class="line">            <span class="keyword">this</span>.count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这个状态自管理应用包含以下几个部分：</p>
+<ul>
+<li><strong>state</strong>，驱动应用的数据源(the source of truth that drives our app)；</li>
+<li><strong>view</strong>，以声明方式将 <strong>state</strong> 映射到视图(a declarative mapping of the <strong>state</strong>)；</li>
+<li><strong>actions</strong>，响应在 <strong>view</strong> 上的用户输入导致的状态变化；</li>
+</ul>
+<p>下面是一个表示“单向数据流(one-way data flow”理念的简单示意</p>
+<p><img src="https://vuex.vuejs.org/flow.png" alt=""></p>
+<ol>
+<li>然而，当我们的应用遇到 <strong>多个组件共享状态</strong> 时，单向数据流的简洁性容易被破坏。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">破坏单向数据流的两种问题如下：</span></span><br><span class="line"><span class="comment">① 多个视图(view)依赖于同一个状态(state)</span></span><br><span class="line"><span class="comment">② 来自不同视图(view)的行为(actions)需要变更同一状态(state)</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>对于问题①，传参(passing props)的方法对于 <strong>多层嵌套的组件(deeply nested components)</strong> 将会非常繁琐，并且对于 <strong>兄弟组件间的状态传递</strong> 无能为力。</li>
+<li>对于问题②，我们经常会采用 <strong>父子组件</strong> 直接引用 或  <strong>通过事件来变更和同步状态的多份拷贝</strong>。</li>
+<li>在2/3中的这些模式非常脆弱，通常会导致无法维护的代码。</li>
+<li>因此，我们为什么不把 <strong>组件的共享状态(the shared state out of the components)</strong> 抽离出来，以一个 <strong>全局单例模式(global singleton)</strong> 管理呢?</li>
+<li>在这种 <strong>全局单例模式</strong> 下，我们的组件树构成了一个巨大的“视图(view)”，不管在树的哪个位置，任何组件都能获取状态(state) 或者 触发行为(actions)。</li>
+<li>通过 <strong>定义(defining)</strong> 和 <strong>隔离(separating)</strong> 状态管理中的各种概念，并通过 <strong>强制规则(enforcing rules)</strong> 维持视图(view)和状态(state)间的独立性，我们的代码将会变得更结构化且易维护。</li>
+<li>5/6/7所讲的就是Vuex背后的基本思想，借鉴了 <a href="https://facebook.github.io/flux/docs/overview.html" target="_blank" rel="noopener">Flux</a>，<a href="https://redux.js.org/" target="_blank" rel="noopener">Redux</a> 和 <a href="https://guide.elm-lang.org/architecture/" target="_blank" rel="noopener">The Elm Architecture</a>。与其他模式不同的是，Vuex 是专门为 Vue.js设计的状态管理库，以利用Vue.js的 <strong>细粒度数据响应机制</strong> 来进行高效的状态更新。</li>
+</ol>
+<p><img src="https://vuex.vuejs.org/vuex.png" alt="Vuex细粒度响应机制"></p>
+<h3 id="什么情况下应该使用Vuex？"><a href="#什么情况下应该使用Vuex？" class="headerlink" title="什么情况下应该使用Vuex？"></a>什么情况下应该使用Vuex？</h3><ol>
+<li>Vuex可以帮助我们管理共享状态(deal with shared state management)，并附带了更多的概念和框架</li>
+<li>Vuex适合开发中大型单页应用。</li>
+<li>如果您的应用够简单，最好不要使用Vuex，一个简单的 <a href="https://cn.vuejs.org/v2/guide/state-management.html#%E7%AE%80%E5%8D%95%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E8%B5%B7%E6%AD%A5%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">store模式</a> 就足够您所需了。</li>
+</ol>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><ol>
+<li>每一个Vuex应用的核心就是 store(仓库)</li>
+<li>store基本上就是一个容器，它包含着您的应用中大部分的 <strong>状态(state)</strong>。</li>
+<li>Vuex和单纯的全局对象有以下两点不同：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">① Vuex的状态存储 是响应式的。当Vue组件从store中读取状态时，若store中的状态发生变化，那么相应的组件也会得到高效的更新。</span></span><br><span class="line"><span class="comment">② 你不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地--提交mutation--。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="最简单的store"><a href="#最简单的store" class="headerlink" title="最简单的store"></a>最简单的store</h3><p>Note：我们将在后续的文档示例代码中使用ES2015语法。如果你还没能掌握ES2015，你得<a href="https://babeljs.io/docs/en/learn" target="_blank" rel="noopener">抓紧了</a></p>
+<ol>
+<li>安装Vuex之后，我们首先来创建一个store。创建过程直截了当——仅需要提供一个初始state对象和一些mutation：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果在 模块化构建系统 中，请确保在开头调用了 Vue.use(Vuex)</span></span><br><span class="line"><span class="comment">// Vue.use(Vuex)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        count: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        increment(state)&#123;</span><br><span class="line">            state.count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>现在，你可以通过 <code>store.state</code> 来 <strong>获取及访问状态对象(access the state object)</strong>，以及通过 <code>store.commit</code>  <strong>触发状态变更(trigger a state change)</strong>：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取 及 访问状态对象</span></span><br><span class="line"><span class="built_in">console</span>.log(store.state.count)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发状态变更</span></span><br><span class="line">store.commit(<span class="string">'increment'</span>)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>再次强调，我们通过提交mutation的方式，而非直接改变 <code>store.state.count</code>，是因为我们想要更明确地追踪(track)到状态的变化。——这是一个简单的约定，能够让你的意图更加明显，这样你在阅读代码的时候能更容易地解读应用内部的状态改变。</li>
+<li>此外，这样也让我们有机会去实现一些能记录每次状态改变，保存状态快照的调试工具。</li>
+<li>由于store中的状态时响应式的，在组件中调用store中的状态简单到仅需要在 <strong>计算属性</strong> 中返回即可。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** 通过store选项，提供了一种机制：</span></span><br><span class="line"><span class="comment">将状态(state)从 根组件 注入到 每个子组件中。</span></span><br><span class="line"><span class="comment">就需要调用 Vue.use(Vuex)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        count: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        increment(state)&#123;</span><br><span class="line">            state.count++;</span><br><span class="line">        &#125;,</span><br><span class="line">        decrement(state)&#123;</span><br><span class="line">            state.count--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components: &#123;App&#125;,</span><br><span class="line">    template: <span class="string">'&lt;/App&gt;'</span>,</span><br><span class="line">	store: store <span class="comment">// 把 store 对象提供给 store 选项，这样可以把 store 实例注入到所有的子组件中</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>触发变化也仅仅是在组件中的methods中提交mutation。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    name: <span class="string">"my"</span>,</span><br><span class="line">    data: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">        count: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">// 作为子组件，可以通过 this.$store 访问到 根实例中 注册的store选项</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.count；</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;，</span><br><span class="line">    methods: &#123;</span><br><span class="line">        addCount()&#123;</span><br><span class="line">            <span class="keyword">this</span>.$store.commit(<span class="string">'increment'</span>);</span><br><span class="line">            <span class="comment">// 杜绝使用 this.$store.state.count = this.$store.state.count + 1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        subCount()&#123;</span><br><span class="line">        	<span class="keyword">this</span>.$store.commit(<span class="string">'decrement'</span>);        </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来，我们将会更深入地探讨一些核心概念。让我们先从 <a href="https://vuex.vuejs.org/zh/guide/state.html" target="_blank" rel="noopener">State</a> 开始吧。</p>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><h3 id="State"><a href="#State" class="headerlink" title="State"></a>State</h3><h4 id="单一状态树-Single-State-Tree"><a href="#单一状态树-Single-State-Tree" class="headerlink" title="单一状态树(Single State Tree)"></a>单一状态树(Single State Tree)</h4><ol>
+<li>Vuex 使用 <strong>单一状态树(Single State Tree)</strong>，也就是用一个对象就包含了全部的应用层级状态(contains all your application level state)，作为一个“唯一的数据源(SSOT，Single source of truth)”而存在。</li>
+<li>这也意味着，每个应用将仅仅包含一个store实例(have one store for each application)。</li>
+<li>单一状态树 让我们能够直接地定位任一特定的状态片段，在调试的过程中也能轻易地取得整个当前应用状态的快照。</li>
+<li>单状态树和模块化并不冲突——在后面的章节里，我们会讨论如何将 <strong>状态和状态变更事件</strong> 分布到各个子模块中。</li>
+</ol>
+<h4 id="在Vue组件中获得Vuex状态-Getting-Vuex-State-into-Vue-Components"><a href="#在Vue组件中获得Vuex状态-Getting-Vuex-State-into-Vue-Components" class="headerlink" title="在Vue组件中获得Vuex状态(Getting Vuex State into Vue Components)"></a>在Vue组件中获得Vuex状态(Getting Vuex State into Vue Components)</h4><ol>
+<li>那么我们如何 在Vue组件中展示状态呢(How do we display state inside the store in our Vue components)？</li>
+<li>由于Vuex的状态存储是响应式的(Since Vuex stores are reactive)，从store实例中读取状态的最简单的方法就是在 <strong>计算属性</strong> 中返回某个状态(state)：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个Counter组件</span></span><br><span class="line"><span class="keyword">const</span> Counter = &#123;</span><br><span class="line">    template: <span class="string">'&lt;div&gt;&#123;&#123; count&#125;&#125;&lt;/div&gt;'</span>,</span><br><span class="line">    computed: &#123;</span><br><span class="line">        count()&#123;</span><br><span class="line">            <span class="keyword">return</span> store.state.count;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>每当 <code>store.state.count</code> 变化的时候，都会重新求取计算属性，并且触发更新相关联的DOM。</li>
+</ol>
+<h3 id="Getter"><a href="#Getter" class="headerlink" title="Getter"></a>Getter</h3><h3 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h3><h3 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h3><h3 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h3><h2 id="项目结构-Application-Structure"><a href="#项目结构-Application-Structure" class="headerlink" title="项目结构(Application Structure)"></a>项目结构(Application Structure)</h2><h2 id="插件-Plugins"><a href="#插件-Plugins" class="headerlink" title="插件(Plugins)"></a>插件(Plugins)</h2><h2 id="严格模式-Strict-Mode"><a href="#严格模式-Strict-Mode" class="headerlink" title="严格模式(Strict Mode)"></a>严格模式(Strict Mode)</h2><h2 id="表单处理-Form-Handling"><a href="#表单处理-Form-Handling" class="headerlink" title="表单处理(Form Handling)"></a>表单处理(Form Handling)</h2><h2 id="测试-Testing"><a href="#测试-Testing" class="headerlink" title="测试(Testing)"></a>测试(Testing)</h2><h2 id="热重载-Hot-Reloading"><a href="#热重载-Hot-Reloading" class="headerlink" title="热重载(Hot Reloading)"></a>热重载(Hot Reloading)</h2>
+      
+    </div>
+    
+    
+    
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+	  
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vuex/" rel="tag"># Vuex</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/02/事件处理/" rel="next" title="事件处理(Event Handling)">
+                <i class="fa fa-chevron-left"></i> 事件处理(Event Handling)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="人模狗样的人儿">
+            
+              <p class="site-author-name" itemprop="name">人模狗样的人儿</p>
+              <p class="site-description motion-element" itemprop="description">听说一九九二</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/WangJefy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/3001378164" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wwfhuo@163.com" target="_blank" title="邮箱">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>邮箱</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/6bb2b949163c" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuex安装"><span class="nav-number">1.</span> <span class="nav-text">Vuex安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuex是什么-What-is-Vuex"><span class="nav-number">2.</span> <span class="nav-text">Vuex是什么(What is Vuex)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是“状态管理模式”？"><span class="nav-number">2.1.</span> <span class="nav-text">什么是“状态管理模式”？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么情况下应该使用Vuex？"><span class="nav-number">2.2.</span> <span class="nav-text">什么情况下应该使用Vuex？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">3.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最简单的store"><span class="nav-number">3.1.</span> <span class="nav-text">最简单的store</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心概念"><span class="nav-number">4.</span> <span class="nav-text">核心概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#State"><span class="nav-number">4.1.</span> <span class="nav-text">State</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单一状态树-Single-State-Tree"><span class="nav-number">4.1.1.</span> <span class="nav-text">单一状态树(Single State Tree)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在Vue组件中获得Vuex状态-Getting-Vuex-State-into-Vue-Components"><span class="nav-number">4.1.2.</span> <span class="nav-text">在Vue组件中获得Vuex状态(Getting Vuex State into Vue Components)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Getter"><span class="nav-number">4.2.</span> <span class="nav-text">Getter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mutation"><span class="nav-number">4.3.</span> <span class="nav-text">Mutation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Action"><span class="nav-number">4.4.</span> <span class="nav-text">Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Module"><span class="nav-number">4.5.</span> <span class="nav-text">Module</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目结构-Application-Structure"><span class="nav-number">5.</span> <span class="nav-text">项目结构(Application Structure)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件-Plugins"><span class="nav-number">6.</span> <span class="nav-text">插件(Plugins)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#严格模式-Strict-Mode"><span class="nav-number">7.</span> <span class="nav-text">严格模式(Strict Mode)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单处理-Form-Handling"><span class="nav-number">8.</span> <span class="nav-text">表单处理(Form Handling)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试-Testing"><span class="nav-number">9.</span> <span class="nav-text">测试(Testing)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热重载-Hot-Reloading"><span class="nav-number">10.</span> <span class="nav-text">热重载(Hot Reloading)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">人模狗样的人儿</span>
+
+  
+</div>
+
+
+  <div class="powered-by"> <a class="theme-link" target="_blank" href="">人模狗样的人儿</a> 的博客</div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
