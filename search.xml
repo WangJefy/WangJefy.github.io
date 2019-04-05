@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[前端面试知识]]></title>
+    <url>%2F2019%2F04%2F05%2F%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%2F</url>
+    <content type="text"><![CDATA[1234本文完全采纳微信公众号：JavaScript 提供的优秀文章，读来让人受益匪浅，特此说明。并向您强烈推荐关注此公众号，学习JavaScript。原作者：appleguardu原文链接：https://segmentfault.com/a/1190000018603454 基本功考察关于HTML html 语义化标签的理解、结构化的理解；能否写出简洁的html结构；SEO优化。 h5中新增的属性，如自定义属性data、类名className等；新增表单元素；拖拽Drag。 h5中新增的API、修改的API、废弃的API稍作了解(离线存储、audio、video)。 关于CSS CSS选择器(三大特性) BFC机制 盒模型 CSS模块化开发(封装)；SCSS 和 LESS的使用 屏幕适配以及页面自适应 CSS3中新增的选择器 CSS3中新增的属性，transform、trasition、animation等 关于布局 标准文档流(padding + margin + 负margin) + 浮动 float + 定位 left + right + top + bottom 百分比布局：px单位用 %num 代替，占父级元素的百分比 flex弹性布局：主轴、辅助轴的几个属性 grid栅格布局：使用框架中的类名来替代，本质上还是百分比布局 关于JS基础 变量数据类型及检测：基本 + 引用 运算符：算术 + 条件 + 逻辑 + 位 + 短路、隐式转换等 条件、循环、异常处理、if、switch(){case: xxx}、try、catch、finally、throw 函数定义、调用方式(apply、call、直接调用)；传参：实参 给 形参赋值 字符串、数组、对象常用API 正则表达式 关于JS高级 作用域、作用域链、闭包 原型、原型链、继承 函数上下文、this指向 js运行机制、事件队列和循环 Ajax原理、axio库 同步、异步编程 jQuery源码学习 关于浏览器 浏览器的构成和运行机制 浏览器的内核 浏览器交互：BOM和DOM相关webApi、监听事件 浏览器缓存机制 浏览器渲染原理 浏览器的安全性：跨域和攻击 关于网络协议 HTTP协议 cookie、session、token 关于ES6语法 字符串、数组、对象拓展的Api 变量拓展：let、const结构赋值、块级作用域 函数拓展：箭头函数默认参数、rest参数 展开运算符、模板字符串 set和map数据结构 迭代器和生成器函数next和yield的理解 proxy对象属性迭代器：属性的读取(get)和设置(set)相关操作 promise对象、异步编程的解决方案 async + await：异步编程的终极方案 promise + generator 的语法糖 class 语法、构造函数的语法糖 模块化编程export + import 的导出和导入 Vue基础 基本指令 实例的属性和方法 实例的生命周期 组件基础：创建、注册、添加属性方法、套用等 组件通信传值，父子、兄弟、跨级 插槽slot等 Vue高级 vue-router：搭建SPA 12345* 路由、组件的配置* 路由间的传值* 路由跳转* 路由的导航守卫* 记住在router.js和组件页面中的使用方式 vuex：状态管理、数据仓库store 1234* 实例化仓库的5大属性的使用* state、getters、mutations、actions、modules* 辅助函数mapState等，仓库中计算属性的映射、方便操作* 记住在store.js和组件中使用方式 Vue深入、源码阅读 数据响应式原理 virtual dom diff 算法 nextTick等 项目能力考察项目能力 vue-cli脚手架搭建和功能配置 vue.config.js webpack 的常用配置 项目构建打包 熟悉各类框架文档 UI框架：Bootstrap、MUI、Element-UI等 常用的插件整理：整理一个自己插件库，封装自己的方法库、组件等 常用工具熟练度 PC端和移动端开发注意事项 经验总结：快速确定项目的技术选型 坑点总结：项目遇到坑坑坑 项目中的性能优化记录（都是细节点，多记录） 需求文档的理解，可以结合项目流程图、UML图 记录习惯养成。 问题解决能力：bug定位调试、查找文档、寻求他人 模块化、组件化开发能力 项目分类；各类文件整理、分类 各类功能封装 组件和功能模块的抽离、解耦、复用 内功考察面向对象的编程思想 类的抽象 对象的封装、继承 为了更好的去管理数据、分类数据，实现高内聚、低耦合 设计模式设计模式 感觉也是面向对象思想再度抽象成现实中某些特定模式 数据结构与算法 学习常用的排序搜索算法、顺序表、链表、栈、队列、树、堆等 考验你的抽象思维和数学功底 将现实需求抽象成计算机代码的思维能力 附加技能考察学习能力 持续学习的态度——博客、笔记记录 技术论坛活跃度高、问答多 Github开源项目参与 了解一门后端语言 Java、Python、node.js 数据库 mysql、redis、mongodb node + express搭建本地服务 系统编程 Linux命令行编程、系统文件管理 多任务、多线程、多进程、协程、并发、并行、串行、同步、异步等概念的理解]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>知识点清单</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Vue Router入门]]></title>
     <url>%2F2019%2F04%2F03%2FVue-Router%E5%85%A5%E9%97%A8%2F</url>
     <content type="text"><![CDATA[安装]]></content>
@@ -190,7 +201,7 @@
   <entry>
     <title><![CDATA[写文备注]]></title>
     <url>%2F2019%2F01%2F08%2F%E5%86%99%E6%96%87%E5%A4%87%E6%B3%A8%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20hello-world%2F</url>
-    <content type="text"><![CDATA[本博客使用Hexo搭建完成~ 快速入门创建新文章1$ hexo new "My New Post" 启动本地服务1$ hexo server 生成静态文件1$ hexo generate 部署到远程服务器1$ hexo deploy 访问打开浏览器，输入 https://wangjefy.github.io/ 选择主题主题官网]]></content>
+    <content type="text"><![CDATA[本博客使用Hexo搭建完成~ 快速入门创建新文章1$ hexo new "My New Post" 启动本地服务1$ hexo server 生成静态文件1$ hexo generate 部署到远程服务器1$ hexo deploy 访问打开浏览器，输入 https://wangjefy.github.io/ 选择主题主题官网 Hexo 中添加本地图片 把主页配置文件 _config.yml 中将设置 post_asset_folder: true 在 hexo 目录下执行 npm install hexo-asset-image --save 创建新博文 hexo n &quot;aaa&quot; 生成博文，此时/source/_posts文件夹内除了 aaa.md 文件还有一个同名的文件夹 将要添加的图片 picA.jpg 放到这个文件夹中 通过 ![随意起名](aaa/picA.jpg) 即可引用]]></content>
       <categories>
         <category>随笔</category>
       </categories>
