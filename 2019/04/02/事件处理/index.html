@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="人模狗样的人儿">
 <meta property="og:description" content="监听事件(Listening to Events) 可以用 v-on 指令监听DOM事件，并在触发时运行一些JavaScript代码  12345678&amp;lt;div id=&quot;example-1&quot;&amp;gt;    &amp;lt;button v-on:click=&quot;counter += 1&quot;&amp;gt;        Add 1    &amp;lt;/button&amp;gt;    &amp;lt;p&amp;gt;        T">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-05T01:11:39.999Z">
+<meta property="og:updated_time" content="2019-04-05T10:01:33.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件处理(Event Handling)">
 <meta name="twitter:description" content="监听事件(Listening to Events) 可以用 v-on 指令监听DOM事件，并在触发时运行一些JavaScript代码  12345678&amp;lt;div id=&quot;example-1&quot;&amp;gt;    &amp;lt;button v-on:click=&quot;counter += 1&quot;&amp;gt;        Add 1    &amp;lt;/button&amp;gt;    &amp;lt;p&amp;gt;        T">
@@ -444,6 +444,54 @@
 <li>在监听键盘事件时，我们经常需要检查详细的按键。</li>
 <li>Vue允许为 v-on 在监听键盘事件时添加按键修饰符：</li>
 </ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 只有在 key 是 Enter 时调用 vm.submit() --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-on:keyup.enter</span>=<span class="string">"submit"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>你可以直接将 <code>KeyboardEvent.key</code> 暴露的任意有效按键名 转换为 kebab-case 来作为修饰符</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-on:keyup.page-down</span>=<span class="string">"onPageDown"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在上述示例中，处理函数只会在 <code>$event.key</code> 等于 <code>PageDown</code> 时被调用。</li>
+</ol>
+<h3 id="按键码-Key-Codes"><a href="#按键码-Key-Codes" class="headerlink" title="按键码(Key Codes)"></a>按键码(Key Codes)</h3><ol>
+<li><code>keyCode</code> 的事件用法 <strong>已经被废弃</strong> 了并可能不会被最新的浏览器支持。</li>
+<li>使用 <code>keyCode</code> 特性(attributes) 是允许的：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-on:keyup.13</span>=<span class="string">"submit"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>为了在必要的情况下支持旧浏览器，Vue提供了绝大多数常用的按键码别名：</li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">* </span>.enter</span><br><span class="line"><span class="bullet">* </span>.tab</span><br><span class="line"><span class="bullet">* </span>.delete（捕获‘删除’和‘退格’键)</span><br><span class="line"><span class="bullet">* </span>.esc</span><br><span class="line"><span class="bullet">* </span>.space</span><br><span class="line"><span class="bullet">* </span>.up</span><br><span class="line"><span class="bullet">* </span>.down</span><br><span class="line"><span class="bullet">* </span>.left</span><br><span class="line"><span class="bullet">* </span>.right</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>有些按键（ .esc 以及所有的方向键）在IE9中有不同的 <code>key</code> 值，如果你想支持 IE9，上面这些内置的别名应该是首选的。</li>
+<li>你还可以通过全局 <code>config.keyCodes</code> 对象 <strong>自定义按键修饰符别名</strong> ：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以使用 v-on:keyup.f1</span></span><br><span class="line">Vue.config.keyCode.f1 = <span class="number">112</span></span><br></pre></td></tr></table></figure>
+<h2 id="系统修饰键-System-Modifier-Keys"><a href="#系统修饰键-System-Modifier-Keys" class="headerlink" title="系统修饰键(System Modifier Keys)"></a>系统修饰键(System Modifier Keys)</h2><ol>
+<li>[V2.1.0新增] 可以用如下修饰符来实现 <strong>仅在按下相应按键时</strong> 才触发鼠标或键盘事件的监听器</li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">* </span>.ctrl</span><br><span class="line"><span class="bullet">* </span>.alt</span><br><span class="line"><span class="bullet">* </span>.shift</span><br><span class="line"><span class="bullet">* </span>.meta</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>注意：在Mac系统键盘上，meta对应command键；在Windows系统键盘上meta对应Windows徽标键；在Sun操作系统键盘上，meta赌赢实心宝石键。在其他特定键盘上，尤其是在MIT和Lisp机器的键盘、以及其后继产品，比如Knight键盘、space-cadet键盘，meta被标记为“META”。在Symbolics键盘上，meta被标记为“META”或“Meta。</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Alt + C --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> @<span class="attr">keyup.alt.67</span>=<span class="string">"clear"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Ctrl + Click --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> @<span class="attr">click.ctrl</span>=<span class="string">"doSomething"</span>&gt;</span></span><br><span class="line">    Do Something</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>请注意修饰键与常规按键不同，在和 <code>keyup</code> 事件一起用时，事件触发时修饰键必须处于按下状态。换句话说，只有在按住 <code>ctrl</code> 的情况下释放其它按键，才能触发 <code>keyup.ctrl</code>。而单单释放 <code>ctrl</code> 也不会触发事件。如果你想要这样的行为，请为 <code>ctrl</code> 换用 <code>keyCode</code>：<code>keyup.17</code>。</li>
+</ol>
+<h3 id="exact-修饰符"><a href="#exact-修饰符" class="headerlink" title=".exact 修饰符"></a>.exact 修饰符</h3><ol>
+<li><p>[V2.5.0新增] <code>.exact</code> 修饰符允许你控制由精确的系统修饰符组合触发的事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 即使 Alt 或 Shift 被一同按下时也会触发 --&gt;</span><br><span class="line">&lt;button @click.ctrl=&quot;onClick&quot;&gt;A&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 有且只有 Ctrl 被按下的时候才触发 --&gt;</span><br><span class="line">&lt;button @click.ctrl.exact=&quot;onCtrlClick&quot;&gt;A&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 没有任何系统修饰符被按下的时候才触发 --&gt;</span><br><span class="line">&lt;button @click.exact=&quot;onClick&quot;&gt;A&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="鼠标按钮修饰符-Mouse-Button-Modifiers"><a href="#鼠标按钮修饰符-Mouse-Button-Modifiers" class="headerlink" title="鼠标按钮修饰符(Mouse Button Modifiers)"></a>鼠标按钮修饰符(Mouse Button Modifiers)</h3><ol>
+<li>[V2.2.0 新增]</li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">* </span>.left</span><br><span class="line"><span class="bullet">* </span>.right</span><br><span class="line"><span class="bullet">* </span>.middle</span><br><span class="line">这些修饰符会限制处理函数仅响应特定的鼠标按钮。</span><br></pre></td></tr></table></figure>
+<h2 id="为什么在HTML中监听事件"><a href="#为什么在HTML中监听事件" class="headerlink" title="为什么在HTML中监听事件"></a>为什么在HTML中监听事件</h2><p>你可能注意到这种事件监听的方式违背了关注点分离 (separation of concern) 这个长期以来的优良传统。但不必担心，因为所有的 Vue.js 事件处理方法和表达式都严格绑定在当前视图的 ViewModel 上，它不会导致任何维护上的困难。实际上，使用 <code>v-on</code> 有几个好处：</p>
+<ol>
+<li>扫一眼 HTML 模板便能轻松定位在 JavaScript 代码里对应的方法。</li>
+<li>因为你无须在 JavaScript 里手动绑定事件，你的 ViewModel 代码可以是非常纯粹的逻辑，和 DOM 完全解耦，更易于测试。</li>
+<li>当一个 ViewModel 被销毁时，所有的事件处理器都会自动被删除。你无须担心如何清理它们。</li>
+</ol>
 
       
     </div>
@@ -574,7 +622,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -657,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#监听事件-Listening-to-Events"><span class="nav-number">1.</span> <span class="nav-text">监听事件(Listening to Events)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理方法-Method-Event-Handlers"><span class="nav-number">2.</span> <span class="nav-text">事件处理方法(Method Event Handlers)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内联处理器中的方法-Methods-in-lnline-Handlers"><span class="nav-number">3.</span> <span class="nav-text">内联处理器中的方法(Methods in lnline Handlers)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件修饰符-Event-Modifiers"><span class="nav-number">4.</span> <span class="nav-text">事件修饰符(Event Modifiers)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按键修饰符-Key-Modifiers"><span class="nav-number">5.</span> <span class="nav-text">按键修饰符(Key Modifiers)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#监听事件-Listening-to-Events"><span class="nav-number">1.</span> <span class="nav-text">监听事件(Listening to Events)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理方法-Method-Event-Handlers"><span class="nav-number">2.</span> <span class="nav-text">事件处理方法(Method Event Handlers)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内联处理器中的方法-Methods-in-lnline-Handlers"><span class="nav-number">3.</span> <span class="nav-text">内联处理器中的方法(Methods in lnline Handlers)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件修饰符-Event-Modifiers"><span class="nav-number">4.</span> <span class="nav-text">事件修饰符(Event Modifiers)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按键修饰符-Key-Modifiers"><span class="nav-number">5.</span> <span class="nav-text">按键修饰符(Key Modifiers)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按键码-Key-Codes"><span class="nav-number">5.1.</span> <span class="nav-text">按键码(Key Codes)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统修饰键-System-Modifier-Keys"><span class="nav-number">6.</span> <span class="nav-text">系统修饰键(System Modifier Keys)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#exact-修饰符"><span class="nav-number">6.1.</span> <span class="nav-text">.exact 修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标按钮修饰符-Mouse-Button-Modifiers"><span class="nav-number">6.2.</span> <span class="nav-text">鼠标按钮修饰符(Mouse Button Modifiers)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么在HTML中监听事件"><span class="nav-number">7.</span> <span class="nav-text">为什么在HTML中监听事件</span></a></li></ol></div>
             
 
           </div>
