@@ -25,7 +25,7 @@
   <entry>
     <title><![CDATA[数据结构与算法]]></title>
     <url>%2F2019%2F04%2F07%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[动态规划实现斐波拉契数列]]></content>
+    <content type="text"><![CDATA[动态规划实现斐波拉契数列 动态规划实现字符串问题 12345678910int hasStar = 1;int noStar = 1;int f1=2;int fTemp = 0;for(int i=2;i&lt;=3;i++)&#123; fTemp = hasStar + noStar*2; hasStar = noStar; noStar = fTemp - noStar;&#125;System.out.println(fTemp);]]></content>
       <categories>
         <category>算法</category>
       </categories>
