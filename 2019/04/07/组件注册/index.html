@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="组件名(Component Names)">
+<meta name="description" content="组件名(Component Names) 在注册一个组件时，我们始终需要给它一个名字，比如在全局注册的时候：  12Vue.component(&apos;my-component-name&apos;, &amp;#123; /* ... */ &amp;#125;)// 该组件名就是 Vue.component 的第一个参数  你给组件取名字可能依赖于你打算拿它来做什么。  组件名大小写定义组件名的方式有两种：  使用kebab">
 <meta name="keywords" content="Vue.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="组件注册(Component Registration)">
 <meta property="og:url" content="http://yoursite.com/2019/04/07/组件注册/index.html">
 <meta property="og:site_name" content="人模狗样的人儿">
-<meta property="og:description" content="组件名(Component Names)">
+<meta property="og:description" content="组件名(Component Names) 在注册一个组件时，我们始终需要给它一个名字，比如在全局注册的时候：  12Vue.component(&apos;my-component-name&apos;, &amp;#123; /* ... */ &amp;#125;)// 该组件名就是 Vue.component 的第一个参数  你给组件取名字可能依赖于你打算拿它来做什么。  组件名大小写定义组件名的方式有两种：  使用kebab">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-07T11:06:06.190Z">
+<meta property="og:updated_time" content="2019-05-06T14:31:38.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组件注册(Component Registration)">
-<meta name="twitter:description" content="组件名(Component Names)">
+<meta name="twitter:description" content="组件名(Component Names) 在注册一个组件时，我们始终需要给它一个名字，比如在全局注册的时候：  12Vue.component(&apos;my-component-name&apos;, &amp;#123; /* ... */ &amp;#125;)// 该组件名就是 Vue.component 的第一个参数  你给组件取名字可能依赖于你打算拿它来做什么。  组件名大小写定义组件名的方式有两种：  使用kebab">
 
 
 
@@ -386,7 +386,40 @@
       
 
       
-        <h1 id="组件名-Component-Names"><a href="#组件名-Component-Names" class="headerlink" title="组件名(Component Names)"></a>组件名(Component Names)</h1>
+        <h1 id="组件名-Component-Names"><a href="#组件名-Component-Names" class="headerlink" title="组件名(Component Names)"></a>组件名(Component Names)</h1><ol>
+<li>在注册一个组件时，我们始终需要给它一个名字，比如在全局注册的时候：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component-name'</span>, &#123; <span class="comment">/* ... */</span> &#125;)</span><br><span class="line"><span class="comment">// 该组件名就是 Vue.component 的第一个参数</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>你给组件取名字可能依赖于你打算拿它来做什么。</li>
+</ol>
+<h2 id="组件名大小写"><a href="#组件名大小写" class="headerlink" title="组件名大小写"></a>组件名大小写</h2><p>定义组件名的方式有两种：</p>
+<ol>
+<li>使用kebab-case</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component-name'</span>, &#123; <span class="comment">/* ... */</span> &#125;)</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">当使用 kebab-case(短横线分隔命名)定义一个组件时，</span></span><br><span class="line"><span class="comment">你也必须在引用这个自定义元素时使用kebab-case,</span></span><br><span class="line"><span class="comment">例如：</span></span><br><span class="line"><span class="comment">&lt;my-component-name&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用PascalCase</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'MyComponentName'</span>, &#123; <span class="comment">/* ... */</span> &#125;)</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">当使用 PascalCase(首字母大写命名)定义一个组件时，</span></span><br><span class="line"><span class="comment">你在引用这个自定义元素时，两种命名法都可以使用，</span></span><br><span class="line"><span class="comment">也就是说 &lt;my-component-name&gt; 和 &lt;MyComponentName&gt;都是可以接受的</span></span><br><span class="line"><span class="comment">建议统一写成kebab-case形式</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h1 id="全局注册-Global-Registration"><a href="#全局注册-Global-Registration" class="headerlink" title="全局注册(Global Registration)"></a>全局注册(Global Registration)</h1><ol>
+<li>到目前为止，我们只用过<code>Vue.component</code>来创建组件：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component-name'</span>, &#123;</span><br><span class="line">    <span class="comment">// ... 选项 ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>这些全局组件时全局注册的，也就是说它们在注册后可以<strong>用在任何新创建的Vue根实例</strong>( new Vue)的模板中。比如：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'component-a'</span>, &#123; <span class="comment">/* ... */</span> &#125;)</span><br><span class="line">Vue.component(<span class="string">'component-b'</span>, &#123; <span class="comment">/* ... */</span> &#125;)</span><br><span class="line">Vue.component(<span class="string">'component-c'</span>, &#123; <span class="comment">/* ... */</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123; <span class="attr">el</span>: <span class="string">'#app'</span> &#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">component-a</span>&gt;</span><span class="tag">&lt;/<span class="name">component-a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">component-b</span>&gt;</span><span class="tag">&lt;/<span class="name">component-b</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">component-c</span>&gt;</span><span class="tag">&lt;/<span class="name">component-c</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>在所有子组件中也是如此</strong>，也就是说这三个组件在各自内部也都可以互相使用</li>
+</ol>
+<h1 id="局部注册-Local-Registration"><a href="#局部注册-Local-Registration" class="headerlink" title="局部注册(Local Registration)"></a>局部注册(Local Registration)</h1><ol>
+<li>全局组件往往不够理想，比如如果你使用一个像webpack这样的构建系统，全局注册所有的组件意味着，即使你已经不再使用该全局组件，它依然会被包含在你最终构建的结果中。</li>
+<li>这就造成了用户下载的 JavaScript，无谓的增加。</li>
+<li></li>
+</ol>
+
       
     </div>
     
@@ -595,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#组件名-Component-Names"><span class="nav-number">1.</span> <span class="nav-text">组件名(Component Names)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#组件名-Component-Names"><span class="nav-number">1.</span> <span class="nav-text">组件名(Component Names)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#组件名大小写"><span class="nav-number">1.1.</span> <span class="nav-text">组件名大小写</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全局注册-Global-Registration"><span class="nav-number">2.</span> <span class="nav-text">全局注册(Global Registration)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#局部注册-Local-Registration"><span class="nav-number">3.</span> <span class="nav-text">局部注册(Local Registration)</span></a></li></ol></div>
             
 
           </div>

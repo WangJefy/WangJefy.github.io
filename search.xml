@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[组件注册(Component Registration)]]></title>
     <url>%2F2019%2F04%2F07%2F%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C%2F</url>
-    <content type="text"><![CDATA[组件名(Component Names)]]></content>
+    <content type="text"><![CDATA[组件名(Component Names) 在注册一个组件时，我们始终需要给它一个名字，比如在全局注册的时候： 12Vue.component('my-component-name', &#123; /* ... */ &#125;)// 该组件名就是 Vue.component 的第一个参数 你给组件取名字可能依赖于你打算拿它来做什么。 组件名大小写定义组件名的方式有两种： 使用kebab-case 1234567Vue.component('my-component-name', &#123; /* ... */ &#125;)/**当使用 kebab-case(短横线分隔命名)定义一个组件时，你也必须在引用这个自定义元素时使用kebab-case,例如：&lt;my-component-name&gt;*/ 使用PascalCase 1234567Vue.component('MyComponentName', &#123; /* ... */ &#125;)/**当使用 PascalCase(首字母大写命名)定义一个组件时，你在引用这个自定义元素时，两种命名法都可以使用，也就是说 &lt;my-component-name&gt; 和 &lt;MyComponentName&gt;都是可以接受的建议统一写成kebab-case形式*/ 全局注册(Global Registration) 到目前为止，我们只用过Vue.component来创建组件： 123Vue.component('my-component-name', &#123; // ... 选项 ...&#125;) 这些全局组件时全局注册的，也就是说它们在注册后可以用在任何新创建的Vue根实例( new Vue)的模板中。比如： 12345Vue.component('component-a', &#123; /* ... */ &#125;)Vue.component('component-b', &#123; /* ... */ &#125;)Vue.component('component-c', &#123; /* ... */ &#125;)new Vue(&#123; el: '#app' &#125;) 12345&lt;div id="app"&gt; &lt;component-a&gt;&lt;/component-a&gt; &lt;component-b&gt;&lt;/component-b&gt; &lt;component-c&gt;&lt;/component-c&gt;&lt;/div&gt; 在所有子组件中也是如此，也就是说这三个组件在各自内部也都可以互相使用 局部注册(Local Registration) 全局组件往往不够理想，比如如果你使用一个像webpack这样的构建系统，全局注册所有的组件意味着，即使你已经不再使用该全局组件，它依然会被包含在你最终构建的结果中。 这就造成了用户下载的 JavaScript，无谓的增加。]]></content>
       <categories>
         <category>前端</category>
       </categories>
