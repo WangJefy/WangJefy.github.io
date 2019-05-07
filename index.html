@@ -420,9 +420,30 @@
 <h1 id="局部注册-Local-Registration"><a href="#局部注册-Local-Registration" class="headerlink" title="局部注册(Local Registration)"></a>局部注册(Local Registration)</h1><ol>
 <li>全局组件往往不够理想，比如如果你使用一个像webpack这样的构建系统，全局注册所有的组件意味着，即使你已经不再使用该全局组件，它依然会被包含在你最终构建的结果中。</li>
 <li>这就造成了用户下载的 JavaScript，无谓的增加。</li>
-<li></li>
+<li>在这种情况下，你可以通过一个普通的 JavaScript 对象来定义组件：</li>
 </ol>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ComponentA = &#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line"><span class="keyword">var</span> ComponentB = &#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line"><span class="keyword">var</span> ComponentC = &#123; <span class="comment">/* ... */</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>然后在 <code>components</code> 选项中定义你想要使用的组件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components: &#123;</span><br><span class="line">        <span class="string">'component-a'</span>: ComponentA,</span><br><span class="line">        <span class="string">'component-b'</span>: ComponentB</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>对于 <code>components</code>对象中的每个属性来说，<strong>其属性名</strong>就是自定义元素的<em>名字</em>，<strong>其属性值</strong>就是这个组件的<em>选项对象</em>。</li>
+<li>注意<strong>局部注册的组件在其子组件中不可用</strong>。</li>
+<li>例如，如果你希望 <code>ComponentA</code> 在 <code>ComponentB</code> 中可用，则你需要这样写：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var ComponentA = &#123; /* ... */ &#125;</span><br><span class="line"> </span><br><span class="line">var ComponentB = &#123;</span><br><span class="line">    components: &#123;</span><br><span class="line">        &apos;component-a&apos;: ComponentA</span><br><span class="line">    &#125;,</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>或者如果你通过Babel和webpack使用ES2015模块，那么代码看起来更像：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ComponentA <span class="keyword">from</span> <span class="string">'./ComponentA.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    components: &#123;</span><br><span class="line">        ComponentA</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>注意在ES2015+中，在对象中放一个类似 <code>ComponentA</code>的变量名其实是 <code>ComponentA: ComponentA</code>的缩写，即这个变量名同时是：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 用在模板中的自定义元素的名称</span><br><span class="line">* 包含了这个组件选项的变量名</span><br></pre></td></tr></table></figure>
+<h1 id="模块系统-Module-Systems"><a href="#模块系统-Module-Systems" class="headerlink" title="模块系统(Module Systems)"></a>模块系统(Module Systems)</h1><ol>
+<li>如果你没有通过 <code>import</code>/<code>require</code> 使用一个模块系统，也许可以暂且跳过这个章节。</li>
+<li>如果你使用了，那么我们会为你提供一些特殊的使用说明和注意事项。</li>
+</ol>
+<h2 id="在模块系统中局部注册-Local-Registration-in-a-Module-System"><a href="#在模块系统中局部注册-Local-Registration-in-a-Module-System" class="headerlink" title="在模块系统中局部注册(Local Registration in a Module System)"></a>在模块系统中局部注册(Local Registration in a Module System)</h2>
           
         
       
@@ -1478,7 +1499,10 @@
 
       
         
-          <h2 id="Vuex安装"><a href="#Vuex安装" class="headerlink" title="Vuex安装"></a>Vuex安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install vuex --save</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line">yarn add vuex</span><br></pre></td></tr></table></figure>
+          <h2 id="Vuex安装"><a href="#Vuex安装" class="headerlink" title="Vuex安装"></a>Vuex安装</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install vuex --save</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">yarn add vuex</span><br></pre></td></tr></table></figure>
+<p><strong>在一个模块化打包系统中，您必须显式地通过 <code>Vue.use()</code> 来安装Vuex</strong>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br></pre></td></tr></table></figure>
+<p><strong>当使用全局script标签引用Vuex时，不需要以上安装过程</strong></p>
 <ol>
 <li>Vuex 依赖 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises" target="_blank" rel="noopener">Promise</a> ，如果你支持的浏览器并没有实现Promise(比如IE)，那么你可以使用一个polyfill的库，例如 <a href="https://github.com/stefanpenner/es6-promise" target="_blank" rel="noopener">es6-promise</a> </li>
 <li>安装 es6-promise 的方式是：</li>

@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="Vuex安装123npm install vuex --save# 或者yarn add vuex  Vuex 依赖 Promise ，如果你支持的浏览器并没有实现Promise(比如IE)，那么你可以使用一个polyfill的库，例如 es6-promise  安装 es6-promise 的方式是：  123npm install es6-promise --save # npm # 或者ya">
+<meta name="description" content="Vuex安装123npm install vuex --save# 或者yarn add vuex 在一个模块化打包系统中，您必须显式地通过 Vue.use() 来安装Vuex: 1234import Vue from &apos;vue&apos;import Vuex from &apos;vuex&apos;Vue.use(Vuex) 当使用全局script标签引用Vuex时，不需要以上安装过程  Vuex 依赖 Promise">
 <meta name="keywords" content="Vuex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vuex 入门">
 <meta property="og:url" content="http://yoursite.com/2019/04/02/Vuex入门/index.html">
 <meta property="og:site_name" content="人模狗样的人儿">
-<meta property="og:description" content="Vuex安装123npm install vuex --save# 或者yarn add vuex  Vuex 依赖 Promise ，如果你支持的浏览器并没有实现Promise(比如IE)，那么你可以使用一个polyfill的库，例如 es6-promise  安装 es6-promise 的方式是：  123npm install es6-promise --save # npm # 或者ya">
+<meta property="og:description" content="Vuex安装123npm install vuex --save# 或者yarn add vuex 在一个模块化打包系统中，您必须显式地通过 Vue.use() 来安装Vuex: 1234import Vue from &apos;vue&apos;import Vuex from &apos;vuex&apos;Vue.use(Vuex) 当使用全局script标签引用Vuex时，不需要以上安装过程  Vuex 依赖 Promise">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://vuex.vuejs.org/flow.png">
 <meta property="og:image" content="https://vuex.vuejs.org/vuex.png">
-<meta property="og:updated_time" content="2019-04-07T13:40:53.900Z">
+<meta property="og:updated_time" content="2019-05-07T13:36:21.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vuex 入门">
-<meta name="twitter:description" content="Vuex安装123npm install vuex --save# 或者yarn add vuex  Vuex 依赖 Promise ，如果你支持的浏览器并没有实现Promise(比如IE)，那么你可以使用一个polyfill的库，例如 es6-promise  安装 es6-promise 的方式是：  123npm install es6-promise --save # npm # 或者ya">
+<meta name="twitter:description" content="Vuex安装123npm install vuex --save# 或者yarn add vuex 在一个模块化打包系统中，您必须显式地通过 Vue.use() 来安装Vuex: 1234import Vue from &apos;vue&apos;import Vuex from &apos;vuex&apos;Vue.use(Vuex) 当使用全局script标签引用Vuex时，不需要以上安装过程  Vuex 依赖 Promise">
 <meta name="twitter:image" content="https://vuex.vuejs.org/flow.png">
 
 
@@ -389,7 +389,10 @@
       
 
       
-        <h2 id="Vuex安装"><a href="#Vuex安装" class="headerlink" title="Vuex安装"></a>Vuex安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install vuex --save</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line">yarn add vuex</span><br></pre></td></tr></table></figure>
+        <h2 id="Vuex安装"><a href="#Vuex安装" class="headerlink" title="Vuex安装"></a>Vuex安装</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install vuex --save</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">yarn add vuex</span><br></pre></td></tr></table></figure>
+<p><strong>在一个模块化打包系统中，您必须显式地通过 <code>Vue.use()</code> 来安装Vuex</strong>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br></pre></td></tr></table></figure>
+<p><strong>当使用全局script标签引用Vuex时，不需要以上安装过程</strong></p>
 <ol>
 <li>Vuex 依赖 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises" target="_blank" rel="noopener">Promise</a> ，如果你支持的浏览器并没有实现Promise(比如IE)，那么你可以使用一个polyfill的库，例如 <a href="https://github.com/stefanpenner/es6-promise" target="_blank" rel="noopener">es6-promise</a> </li>
 <li>安装 es6-promise 的方式是：</li>
