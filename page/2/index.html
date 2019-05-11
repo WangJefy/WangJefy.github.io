@@ -1722,7 +1722,10 @@
       
         
           <h2 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h2><ol>
-<li><code>v-if</code>指令用于条件性地渲染 一块内容。这块内容只会在指令的表达式返回 truthy 值的时候被渲染</li>
+<li><code>v-if</code>指令用于条件性地渲染 一块内容。这块内容只会在指令的表达式返回 Truthy 值的时候被渲染</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">JavaScript中的 <span class="number">7</span> 大假值：</span><br><span class="line">	<span class="literal">false</span></span><br><span class="line">	<span class="literal">undefined</span></span><br><span class="line">	<span class="literal">null</span> </span><br><span class="line">	<span class="number">0</span> </span><br><span class="line">	<span class="number">-0</span></span><br><span class="line">	<span class="literal">NaN</span></span><br><span class="line">	<span class="string">""</span></span><br><span class="line">不是假值，就是真值(Truthy)</span><br></pre></td></tr></table></figure>
+<ol>
 <li>The directive v-if is used to conditionally render a block.</li>
 <li>The block will only be rendered if the directives expression returns a truthy value</li>
 </ol>

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="人模狗样的人儿">
 <meta property="og:description" content="用v-for把一个数组对应成一组元素(Mapping an Array to Elements with v-for) 我们用 v-for 指令根据一组 数组的项目列表 进行渲染(We can use the v-for directive to render a list of items based on an array)。 v-for 指令需要使用 item in items 形式的特殊语">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T05:17:17.492Z">
+<meta property="og:updated_time" content="2019-05-11T01:18:42.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="列表渲染(List Rendering)">
 <meta name="twitter:description" content="用v-for把一个数组对应成一组元素(Mapping an Array to Elements with v-for) 我们用 v-for 指令根据一组 数组的项目列表 进行渲染(We can use the v-for directive to render a list of items based on an array)。 v-for 指令需要使用 item in items 形式的特殊语">
@@ -455,9 +455,9 @@
 <li>Vue包含一组观察数组的变异方法，所以它们也将会触发视图更新(Vue wraps an observed array’s mutation methods so they will also triiger view updates)。</li>
 <li>这些方法(The wrapped methods)如下：</li>
 </ol>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**push()**</span>  <span class="strong">**pop()**</span> <span class="strong">**shift()**</span> <span class="strong">**unshift()**</span> <span class="strong">**splice**</span> <span class="strong">**sort()**</span> <span class="strong">**reverse()**</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">push()    shift()       splice</span><br><span class="line">pop()     unshift()     sort()</span><br><span class="line">                        reverse()</span><br></pre></td></tr></table></figure>
 <ol start="3">
-<li>打开控制台，然后用前面例子的 <code>items</code> 数组调用变异方法：`example1.items.push({ message: ‘Baz’ })</li>
+<li>打开控制台，然后用前面例子的 <code>items</code> 数组调用变异方法：<code>example1.items.push({ message: &#39;Baz&#39; })</code></li>
 </ol>
 <h3 id="替换数组-Replacing-an-Array"><a href="#替换数组-Replacing-an-Array" class="headerlink" title="替换数组(Replacing an Array)"></a>替换数组(Replacing an Array)</h3><ol>
 <li>变异方法(mutation method)会改变被这些方法调用的原始数组。</li>
@@ -472,11 +472,11 @@
 </ol>
 <h3 id="注意事项-Caveats"><a href="#注意事项-Caveats" class="headerlink" title="注意事项(Caveats)"></a>注意事项(Caveats)</h3><p><strong>由于JavaScript的限制，Vue 不能检测以下变动的数组：</strong></p>
 <ol>
-<li>第一类：当你利用索引直接设置一个项时(When you directly set an item with the index, e.g.)。如：</li>
+<li>第一类问题：当你利用索引直接设置一个项时(When you directly set an item with the index)。如：</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.items[indexOfItem] = newValue</span><br></pre></td></tr></table></figure>
 <ol start="2">
-<li>第二类：当你修改数组的长度时，例如 `vm.items.length = newLength</li>
+<li>第二类问题：当你修改数组的长度时，例如 <code>vm.items.length = newLength</code></li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">        items: [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.items[<span class="number">1</span>] = <span class="string">'x'</span> <span class="comment">// 不是响应性的</span></span><br><span class="line">vm.items.length = <span class="number">2</span> <span class="comment">// 不是响应性的</span></span><br></pre></td></tr></table></figure>
 <ol start="3">
