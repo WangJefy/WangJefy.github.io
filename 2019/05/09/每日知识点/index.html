@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="人模狗样的人儿">
 <meta property="og:description" content="ES6中的Array.from()方法类数组对象 定义：拥有一个数值length属性 和 对应非负整数属性 的 对象    1234567891011121314//以下代码为一个常规对象增加了一些属性， 使其变成类数组对象var a = &amp;#123;&amp;#125;; // 从一个常规空对象开始// 添加一些属性，称为“类数组”var i = 0;while(i &amp;lt; 10)&amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-08T23:50:43.734Z">
+<meta property="og:updated_time" content="2019-05-09T13:14:34.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每日知识点">
 <meta name="twitter:description" content="ES6中的Array.from()方法类数组对象 定义：拥有一个数值length属性 和 对应非负整数属性 的 对象    1234567891011121314//以下代码为一个常规对象增加了一些属性， 使其变成类数组对象var a = &amp;#123;&amp;#125;; // 从一个常规空对象开始// 添加一些属性，称为“类数组”var i = 0;while(i &amp;lt; 10)&amp;#123;">
@@ -393,17 +393,19 @@
 <ol start="2">
 <li>如何检测是否为一个类数组对象</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判定o是否为一个类数组对象</span></span><br><span class="line"><span class="comment">// 字符串和函数有length属性，但它们可以用typeof检测将其排除 ++①</span></span><br><span class="line"><span class="comment">// 在客户端JavaScript中，DOM文本节点也有length属性，需要用额外判定</span></span><br><span class="line"><span class="comment">// o.nodeType !== 3 将其排除 ++②</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判定o是否为一个类数组对象</span></span><br><span class="line"><span class="comment">// 字符串和函数有length属性，但它们可以用typeof检测将其排除 ++①</span></span><br><span class="line"><span class="comment">// 在客户端JavaScript中，DOM文本节点也有length属性，需要用额外判定</span></span><br><span class="line"><span class="comment">// o.nodeType !== 3 将其排除 ++②</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArrayLike</span>(<span class="params">o</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(o &amp;&amp; <span class="keyword">typeof</span> o === <span class="string">"object"</span> &amp;&amp;   <span class="comment">// o 非null、undefined</span></span><br><span class="line">      <span class="built_in">isFinite</span>(o.length) &amp;&amp;  <span class="comment">// o.length 是有限值</span></span><br><span class="line">      o.length &gt;= <span class="number">0</span> &amp;&amp; <span class="comment">// o.length 为非负值</span></span><br><span class="line">      o.length === <span class="built_in">Math</span>.floor(o.length) &amp;&amp;  <span class="comment">// o.length 是整数</span></span><br><span class="line">      o.length &lt; <span class="number">4294967296</span>)&#123;  <span class="comment">// o.length &lt; 2^32</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="3">
-<li>函数的length属性</li>
+<li><p>函数的length属性</p>
+<p>JavaScript函数的一个属性是length，它是指 <strong>该函数第一个具有默认值之前的参数个数</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">b, c, a = <span class="number">1</span></span>) </span>&#123;&#125;).length  <span class="comment">// 2</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">b=<span class="number">1</span>, c=<span class="number">1</span>, a = <span class="number">1</span></span>) </span>&#123;&#125;).length) <span class="comment">// 0</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;).length <span class="comment">// 0</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">a</span>)</span>&#123;&#125;).length <span class="comment">// 1</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;&#125;).length <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DOM节点的nodeType属性</p>
+<p>DOM 节点的 nodeType 属性返回以<strong>数字值</strong>返回它的<strong>节点类型</strong>。</p>
+<p>比如如果是元素节点(Element)，则nodeType属性将返回 1,</p>
+<p>比如如果是属性节点(Attr)，则nodeType属性将返回 2，</p>
+<p>比如如果是文本节点(Text)，则nodeType属性将返回 3</p>
+</li>
 </ol>
-<p><a href="https://www.cnblogs.com/go4it/p/9678028.html" target="_blank" rel="noopener">函数length</a></p>
-<ol start="4">
-<li>DOM节点的nodeType属性</li>
-</ol>
-<p><a href="https://www.cnblogs.com/go4it/p/9678028.html" target="_blank" rel="noopener">nodeType</a></p>
-<p><a href="http://www.w3school.com.cn/jsref/prop_node_nodetype.asp" target="_blank" rel="noopener">nodeType</a></p>
-<p><a href="https://zhidao.baidu.com/question/455848022.html" target="_blank" rel="noopener">nodeType</a></p>
 
       
     </div>

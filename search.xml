@@ -8,7 +8,7 @@
   <entry>
     <title><![CDATA[ES6/ES2015]]></title>
     <url>%2F2019%2F05%2F09%2FES6-ES2015%2F</url>
-    <content type="text"><![CDATA[ES5与ES6的区别入门]]></content>
+    <content type="text"><![CDATA[ES5与ES6的区别入门 ES6是什么 ECMAScript 6（以下简称ES6）是JavaScript语言的下一代标准 因为当前版本的ES6是在 2015年 发布的，所以又称为 ECMAScript 2015 也就是说，ES6 就是 ES2015 Babel Babel是一个广泛使用的ES6转码器，可以将ES6代码转为ES5代码，从而在现有环境中执行。]]></content>
       <categories>
         <category>前端</category>
       </categories>
@@ -19,7 +19,7 @@
   <entry>
     <title><![CDATA[每日知识点]]></title>
     <url>%2F2019%2F05%2F09%2F%E6%AF%8F%E6%97%A5%E7%9F%A5%E8%AF%86%E7%82%B9%2F</url>
-    <content type="text"><![CDATA[ES6中的Array.from()方法类数组对象 定义：拥有一个数值length属性 和 对应非负整数属性 的 对象 1234567891011121314//以下代码为一个常规对象增加了一些属性， 使其变成类数组对象var a = &#123;&#125;; // 从一个常规空对象开始// 添加一些属性，称为“类数组”var i = 0;while(i &lt; 10)&#123; a[i] = i * i; i++;&#125;a.length = i;/** 上述代码创建的类数组对象为：&#123;0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, length: 10&#125;*/// Arguments对象就是一个类数组对象// 在客户端JavaScript中，一些DOM方法(如document.getElementByTagName())也返回类数组对象 如何检测是否为一个类数组对象 1234// 判定o是否为一个类数组对象// 字符串和函数有length属性，但它们可以用typeof检测将其排除 ++①// 在客户端JavaScript中，DOM文本节点也有length属性，需要用额外判定// o.nodeType !== 3 将其排除 ++② 函数的length属性 函数length DOM节点的nodeType属性 nodeType nodeType nodeType]]></content>
+    <content type="text"><![CDATA[ES6中的Array.from()方法类数组对象 定义：拥有一个数值length属性 和 对应非负整数属性 的 对象 1234567891011121314//以下代码为一个常规对象增加了一些属性， 使其变成类数组对象var a = &#123;&#125;; // 从一个常规空对象开始// 添加一些属性，称为“类数组”var i = 0;while(i &lt; 10)&#123; a[i] = i * i; i++;&#125;a.length = i;/** 上述代码创建的类数组对象为：&#123;0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, length: 10&#125;*/// Arguments对象就是一个类数组对象// 在客户端JavaScript中，一些DOM方法(如document.getElementByTagName())也返回类数组对象 如何检测是否为一个类数组对象 123456789101112131415// 判定o是否为一个类数组对象// 字符串和函数有length属性，但它们可以用typeof检测将其排除 ++①// 在客户端JavaScript中，DOM文本节点也有length属性，需要用额外判定// o.nodeType !== 3 将其排除 ++②function isArrayLike(o)&#123; if(o &amp;&amp; typeof o === "object" &amp;&amp; // o 非null、undefined isFinite(o.length) &amp;&amp; // o.length 是有限值 o.length &gt;= 0 &amp;&amp; // o.length 为非负值 o.length === Math.floor(o.length) &amp;&amp; // o.length 是整数 o.length &lt; 4294967296)&#123; // o.length &lt; 2^32 return true &#125;else&#123; return false &#125;&#125; 函数的length属性 JavaScript函数的一个属性是length，它是指 该函数第一个具有默认值之前的参数个数。 12345(function(b, c, a = 1) &#123;&#125;).length // 2(function(b=1, c=1, a = 1) &#123;&#125;).length) // 0(function()&#123;&#125;).length // 0(function(a)&#123;&#125;).length // 1(function(a, b)&#123;&#125;).length // 2 DOM节点的nodeType属性 DOM 节点的 nodeType 属性返回以数字值返回它的节点类型。 比如如果是元素节点(Element)，则nodeType属性将返回 1, 比如如果是属性节点(Attr)，则nodeType属性将返回 2， 比如如果是文本节点(Text)，则nodeType属性将返回 3]]></content>
       <categories>
         <category>前端</category>
       </categories>
