@@ -296,6 +296,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/Vue的生命周期/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="人模狗样的人儿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="人模狗样的人儿">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/12/Vue的生命周期/" itemprop="url">Vue的生命周期</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T19:58:59+08:00">
+                2019-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="初识Vue生命周期"><a href="#初识Vue生命周期" class="headerlink" title="初识Vue生命周期"></a>初识Vue生命周期</h1><p><img src="/2019/05/12/Vue的生命周期/lifecycle.png" alt=""></p>
+<p>Vue的生命周期</p>
+<ol>
+<li>每个Vue实例在被创建时都要经过一系列的初始化过程(a series of initialization steps)</li>
+<li>这个过程包含 <strong>设置数据监听(set up data observation)</strong> 、<strong>编译模板(compile the template)</strong>、<strong>将实例挂载到DOM(mount the instance to the DOM)</strong>、<strong>并在数据变化时更新DOM等(update the DOM when data changes)</strong></li>
+<li>同时在这个过程中也会运行一些叫做 <strong>生命周期钩子(Lifecycle Hooks)</strong> 的函数，给了用户在不同阶段添加自定义代码的机会。</li>
+</ol>
+<p><a href="https://segmentfault.com/a/1190000008010666" target="_blank" rel="noopener">以下内容完全参照并引用大神博客</a>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">钩子函数：</span><br><span class="line">beforeCreated    ---- 此时，$el 和 data 的值都是 undefined</span><br><span class="line"></span><br><span class="line">created          ---- 组件创建完成，属性已绑定，可以拿到 data 的值，</span><br><span class="line">					  但是DOM还没生成，$el 属性还不存在</span><br><span class="line"></span><br><span class="line">beforeMount      ---- 模板 编译/挂载 之前</span><br><span class="line"></span><br><span class="line">mounted          ---- 模板 编译/挂载 之后，不保证组件已经在 document 中</span><br><span class="line"></span><br><span class="line">beforeUpdate     ---- 组件更新之前</span><br><span class="line"></span><br><span class="line">updated          ---- 组件更新之后</span><br><span class="line"></span><br><span class="line">activated        ---- keep-alive 会用到；组件被激活时调用</span><br><span class="line"></span><br><span class="line">deactivated      ---- keep-alive 会用到；组件被移除时调用</span><br><span class="line"></span><br><span class="line">beforeDestroyed  ---- 组件销毁前调用</span><br><span class="line"></span><br><span class="line">destroyed 		 ---- 组件销毁后调用</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/vue/2.1.3/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">                &#123;&#123; message &#125;&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        	<span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">                el: <span class="string">'#app'</span>,</span></span><br><span class="line"><span class="undefined">                data: &#123;</span></span><br><span class="line"><span class="javascript">                    message: <span class="string">'xuxiao is boy'</span></span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="javascript">                beforeCreate: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.group(<span class="string">'beforeCreate创建之前状态===================&gt;'</span>);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el      :"</span> + <span class="keyword">this</span>.$el); <span class="comment">//undefined</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.$data); <span class="comment">// undefined</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"message :"</span> + <span class="keyword">this</span>.message) <span class="comment">// undefined</span></span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="javascript">                created: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.group(<span class="string">'created 创建完毕状态=======================&gt;'</span>);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el      :"</span> + <span class="keyword">this</span>.$el); <span class="comment">// undefined</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.$data); <span class="comment">// 已被初始化</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.message); <span class="comment">// 已被初始化</span></span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="javascript">                beforeMount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.group(<span class="string">'beforeMount 挂载前状态=======================&gt;'</span>);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el      :"</span> + <span class="keyword">this</span>.$el); <span class="comment">// 已被初始化</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.$data); <span class="comment">// 已被初始化</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.message); <span class="comment">// 已被初始化</span></span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="javascript">                mounted: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.group(<span class="string">'mounted 挂载结束状态=======================&gt;'</span>);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el      :"</span> + <span class="keyword">this</span>.$el); <span class="comment">// 已被初始化</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.$data); <span class="comment">// 已被初始化</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.message); <span class="comment">// 已被初始化</span></span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="javascript">                beforeUpdate: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.group(<span class="string">'beforeUpdate 更新前状态=======================&gt;'</span>);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el      :"</span> + <span class="keyword">this</span>.$el); </span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.$data); </span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.message); </span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="javascript">                updated: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.group(<span class="string">'updated 更新完成状态=======================&gt;'</span>);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el      :"</span> + <span class="keyword">this</span>.$el); </span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.$data); </span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.message); </span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="javascript">                beforeDestory: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.group(<span class="string">'beforeDestory 销毁前状态=======================&gt;'</span>);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el      :"</span> + <span class="keyword">this</span>.$el); </span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.$data); </span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.message); </span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="javascript">                destroyed: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.group(<span class="string">'destoryed 销毁完成状态=======================&gt;'</span>);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"el      :"</span> + <span class="keyword">this</span>.$el); </span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el);</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.$data); </span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"%c%s"</span>, <span class="string">"color:red"</span>, <span class="string">"data    :"</span> + <span class="keyword">this</span>.message); </span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;)</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>create 和 mounted 相关</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">beforeCreate: el 和 data 均未初始化</span><br><span class="line">created:      data 完成初始化，el 仍未初始化</span><br><span class="line">beforeMount:  el 和 data 已初始化</span><br><span class="line">mounted:      完成实例挂载到DOM</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/12/Vue的生命周期/WeChat Image_20190512213312.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">图中标红处，我们能发现 el 还是 &#123;&#123;message&#125;&#125;,</span><br><span class="line">这里就是应用的 Virtual DOM （虚拟DOM）技术，先把坑占住了</span><br><span class="line">到后面 mounted 挂载的时候，再把 值 渲染进去。</span><br></pre></td></tr></table></figure>
+<p><strong>update 相关</strong></p>
+<p>我们此时 在 Chrome console 里执行以下命令：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.message = <span class="string">"yes !! I do"</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/12/Vue的生命周期/WeChat Image_20190512213332.png" alt=""></p>
+<p><strong>destroy 相关</strong></p>
+<p>我们继续在Console中输入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.$destory();</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/12/Vue的生命周期/WeChat Image_20190512213336.png" alt=""></p>
+<p>关于销毁，还不是很清楚。</p>
+<p>遗留问题： befereUpdate 与 updated 到底啥区别？</p>
+<h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><p>如何使用生命周期函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">beforeCreate: 可以在这里加个 loading 事件</span><br><span class="line"></span><br><span class="line">created: 在这结束 loading, 还可做一些初始化，实现函数自执行 【是否可以请求数据？为什么？】</span><br><span class="line"> </span><br><span class="line">mounted: 在这发起后端请求，拿回数据，配合路由钩子做一些事情</span><br><span class="line"></span><br><span class="line">beforeDestroy: 你确认删除XX吗？ </span><br><span class="line"></span><br><span class="line">destroyed: 当前组件已经删除，清空相关内容</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+	<div>
+	  
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/过滤器/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -511,7 +681,83 @@
       
         
           
-            <h1 id="插槽内容-Slot-Content"><a href="#插槽内容-Slot-Content" class="headerlink" title="插槽内容(Slot Content)"></a>插槽内容(Slot Content)</h1>
+            <h1 id="插槽内容-Slot-Content"><a href="#插槽内容-Slot-Content" class="headerlink" title="插槽内容(Slot Content)"></a>插槽内容(Slot Content)</h1><ol>
+<li>Vue 实现了一套 <strong>内容分发(content distribution)</strong> 的API，这套API的设计灵感源自 Web Components 规范草案，将 <code>&lt;slot&gt;</code> 元素作为承载分发内容的出口。</li>
+<li>它允许你像这样 合成组件：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">navigation-link</span> <span class="attr">url</span>=<span class="string">"/profile"</span>&gt;</span></span><br><span class="line">	Your Profile // 具体要分发的 内容 content</span><br><span class="line"><span class="tag">&lt;/<span class="name">navigation-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 然后 你在 <span class="tag">&lt;<span class="name">navigation-link</span>&gt;</span> 的模板中，可能会写为：</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span></span></span><br><span class="line"><span class="tag">   <span class="attr">v-bind:href</span>=<span class="string">"url"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">class</span>=<span class="string">"nav-link"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>当 <strong>组件渲染时</strong>，<code>&lt;slot&gt;&lt;/slot&gt;</code> 将会被替换为 ”Your Profile”</p>
+</li>
+<li><p><strong>插槽</strong> 内可以包含任何模板代码，包括 HTML：</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">navigation-link</span> <span class="attr">url</span>=<span class="string">"/profile"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 添加一个 Font Awesome 图标 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"fa fa-user"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    Your Profile</span><br><span class="line"><span class="tag">&lt;/<span class="name">navigation-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>甚至可以是 其它的组件：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">navigation-link</span> <span class="attr">url</span>=<span class="string">"/profile"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 添加一个图标组件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">font-awesome-icon</span> <span class="attr">name</span>=<span class="string">"user"</span>&gt;</span><span class="tag">&lt;/<span class="name">font-awesome-icon</span>&gt;</span></span><br><span class="line">    Your Profile</span><br><span class="line"><span class="tag">&lt;/<span class="name">navigation-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>而如果 <code>&lt;navigation-link&gt;</code>  <strong>没有</strong> 包含一个 <code>&lt;slot&gt;</code> 元素，则该组件 <strong>起始标签</strong> 和 <strong>结束标签</strong> 之间的任何内容都会被 <strong>抛弃</strong>。</p>
+<h1 id="编译作用域-Compilation-Scope"><a href="#编译作用域-Compilation-Scope" class="headerlink" title="编译作用域(Compilation Scope)"></a>编译作用域(Compilation Scope)</h1><ol>
+<li>当你想在一个插槽中使用数据时，例如：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">navigation-link</span> <span class="attr">url</span>=<span class="string">"/profile"</span>&gt;</span></span><br><span class="line">	Logged in as &#123;&#123; user.name &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">navigation-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>该插槽跟模板的其它地方一样可以访问相同的实例属性（也就是相同的“作用域”），而 <strong>不能</strong> 访问<code>&lt;navigation-link&gt;</code> 的作用域。例如</li>
+<li><code>url</code> 是访问不到的：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">navigation-link</span> <span class="attr">url</span>=<span class="string">"/profile"</span>&gt;</span></span><br><span class="line">	Clicking here will send you to : &#123;&#123; url &#125;&#125;</span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	这里的 url 会是 undefined,</span></span><br><span class="line"><span class="comment">	因为 “/profile" 是 传递给 &lt;navigation-link 的</span></span><br><span class="line"><span class="comment">	而不是 在&lt;navigation-link&gt; 组件 内部 定义的</span></span><br><span class="line"><span class="comment">&lt;/navigation-link&gt;</span></span><br></pre></td></tr></table></figure>
+<p>需要记住一条规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">父级 模板里的所有内容 都是在父级作用域中编译的；</span><br><span class="line">子模板里的所有内容都是在子作用域中编译的；</span><br></pre></td></tr></table></figure>
+<p>a. 有个例子</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 父级组件中：--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">todo-item</span>  <span class="attr">label</span>=<span class="string">"我不配有姓名"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">class</span>=<span class="string">"username-input"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">placeholder</span>=<span class="string">"Enter your username"</span></span></span><br><span class="line"><span class="tag">                    <span class="attr">woshi</span>=<span class="string">"niniu"</span>&gt;</span></span><br><span class="line">			// 要分发的内容</span><br><span class="line">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">todo-item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 子组件中 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 会被渲染成 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="后备内容-Fallback-Content"><a href="#后备内容-Fallback-Content" class="headerlink" title="后备内容(Fallback Content)"></a>后备内容(Fallback Content)</h1><ol>
+<li>有时，为一个插槽设置 <strong>具体的后备内容(也就是默认的）</strong> 是很有用的，</li>
+<li>它 <strong>只会在没有提供内容的时候</strong> 被渲染</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 在 submit-button 组件中  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>a. 改进后的 <code>&lt;submit-button&gt;</code> 组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 我们可能希望这个 &lt;button&gt; 内绝大多数情况下，都只渲染文本"Submit"  --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 为了将“Submit"作为后备内容，我们可以将它放在 &lt;slot&gt; 标签内 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>b. 现在我们在一个 <strong>父级组件</strong> 中使用 <code>&lt;submit-button&gt;</code> 并且 <strong>不提供</strong> <strong>任何插槽内容</strong> 时：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">submit-button</span>&gt;</span><span class="tag">&lt;/<span class="name">submit-button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 此时，后备内容“Submit" 将会被渲染 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line">    Submit</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>c. 但是如果我们提供了内容：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">submit-button</span>&gt;</span></span><br><span class="line">	Save</span><br><span class="line"><span class="tag">&lt;/<span class="name">submit-button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 则 这个提供的内容 将会被渲染，替代掉后备内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line">    Save</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="具名插槽-Named-Slots"><a href="#具名插槽-Named-Slots" class="headerlink" title="具名插槽(Named Slots)"></a>具名插槽(Named Slots)</h1><ol>
+<li>有时，我们需要多个插槽</li>
+<li>例如，对于一个带有 如下模板的 <code>&lt;base-layout&gt;</code> 组件：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    	<span class="comment">&lt;!-- 我们希望把页头放在这里 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">    	<span class="comment">&lt;!-- 我们希望把主要内容放在这里 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">    	<span class="comment">&lt;!-- 我们希望把页脚放在这里 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>对于 <strong>2</strong> 中这样的情况， <code>&lt;slot&gt;</code> 元素有一个特殊的特性：<code>&lt;name&gt;</code>，这个特性可以用来定义额外的 插槽：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"header"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span> <span class="comment">&lt;!-- 一个不带 name 的 &lt;slot&gt; 出口会带有隐含的名字 ~ "default" --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"footer"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>设置带有 <code>name</code> 特性的 <code>&lt;slot&gt;</code>，我们称为 <strong>具名插槽</strong></li>
+<li>在向 <strong>具名插槽</strong> 提供内容的时候，我们可以在一个 <code>&lt;template&gt;</code> 元素上使用 <code>v-slot</code> 指令，并以 <code>&lt;v-slot&gt;</code> 的参数的形式提供其名称：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-layout</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:header</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>Here might be a page title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>A paragraph for the main content.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>And another one.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:footer</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">p</span>&gt;</span>Here's some contact info<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">base-layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>现在，<code>&lt;tempalte&gt;</code> 元素中的所有内容都会被传入相应的 插槽</p>
+<p>任何没有被包裹在带有 <code>v-slot</code> 的 <code>&lt;template&gt;</code> 中的内容都会被视为 <strong>默认插槽</strong> 的内容。</p>
+<ol start="6">
+<li>然而，如果你希望更明确一些，仍然可以在 一个 <code>&lt;template&gt;</code> 中包裹默认插槽的内容：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-layout</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tempalte</span> <span class="attr">v-slot:header</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>Here might be a page title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tempalte</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:default</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">p</span>&gt;</span>A paragraph for the main content.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>And another one. <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:footer</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">p</span>&gt;</span>Here's some contact info<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">base-layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>任何一种写法都会渲染出：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Here might be a page title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>A paragraph for the main content.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>And another one.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Here's some contact info<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>注意：<code>v-slot</code> <strong>只能添加在</strong> 一个 <code>&lt;tempalte&gt;</code> 上（只有<a href="https://cn.vuejs.org/v2/guide/components-slots.html#%E7%8B%AC%E5%8D%A0%E9%BB%98%E8%AE%A4%E6%8F%92%E6%A7%BD%E7%9A%84%E7%BC%A9%E5%86%99%E8%AF%AD%E6%B3%95" target="_blank" rel="noopener">一种情况例外</a>），这一点和已经废弃的 <a href="https://cn.vuejs.org/v2/guide/components-slots.html#废弃了的语法" target="_blank" rel="noopener"><code>slot</code> 特性</a>不同。</li>
+</ol>
+<h1 id="作用域插槽-Scoped-Slots"><a href="#作用域插槽-Scoped-Slots" class="headerlink" title="作用域插槽(Scoped Slots)"></a>作用域插槽(Scoped Slots)</h1><ol>
+<li>有时，让插槽内容能够访问子组件中才有的数据是很有用的。</li>
+<li>例如，设想一个带有如下模板的 <code>&lt;current-user&gt;</code> 组件：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &lt;current-user&gt; 组件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">slot</span>&gt;</span>&#123;&#123; user.lastName &#125;&#125;<span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -654,8 +900,7 @@
 
       
         
-          
-            <h1 id="事件名-Event-Names"><a href="#事件名-Event-Names" class="headerlink" title="事件名(Event Names)"></a>事件名(Event Names)</h1><ol>
+          <h1 id="事件名-Event-Names"><a href="#事件名-Event-Names" class="headerlink" title="事件名(Event Names)"></a>事件名(Event Names)</h1><ol>
 <li>不同于 <strong>组件</strong> 和 <strong>prop</strong>，事件名 <strong>不存在任何自动化的大小写转换</strong>。</li>
 <li>触发的事件名是需要 <strong>完全匹配</strong> 监听这个事件所用的名称。</li>
 </ol>
@@ -666,51 +911,13 @@
 <li>并且 <code>v-on</code> 事件监听器在 DOM 模板中会被自动转换为 全小写，所以 <code>v-on:myEvent</code>将会变成 <code>v-on:myevent</code>——导致 <code>myEvent</code> 不可能被监听到。</li>
 <li>因此我们强烈建议 <strong>始终使用 kebab-case 的事件名</strong></li>
 </ol>
-<h1 id="自定义-组件的v-model-V2-2-0-新增"><a href="#自定义-组件的v-model-V2-2-0-新增" class="headerlink" title="自定义-组件的v-model[V2.2.0+新增]"></a>自定义-组件的v-model[V2.2.0+新增]</h1><ol>
-<li>一个组件上的 <code>v-model</code> 默认会利用名为 <code>value</code> 的 prop 和 名为 <code>input</code> 的event.</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"something"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">===</span> 上面的 <span class="attr">v-model</span> 指令其实是 下面的语法糖包装而成 ===&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> </span></span><br><span class="line"><span class="tag">	<span class="attr">:value</span>=<span class="string">"something"</span></span></span><br><span class="line"><span class="tag">	@<span class="attr">input</span>=<span class="string">"something = $event.target.value"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;<span class="name">===</span> 在一个自定义组件上使用 <span class="attr">v-model</span> 时，会简化为： ===&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">custom-input</span></span></span><br><span class="line"><span class="tag">              <span class="attr">:value</span>=<span class="string">"something"</span></span></span><br><span class="line"><span class="tag">              @<span class="attr">input</span>=<span class="string">"value =&gt; &#123; something = value &#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">custom-input</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;<span class="name">===</span> 因此，当我们去自定义一个组件的 <span class="attr">v-model</span> 时 ===&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">===</span> 就需要设置两个参数：<span class="attr">prop</span> 和 <span class="attr">event</span> ===&gt;</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>但是，像单选框、复选框等类型的 输入控件可能会将 <code>value</code> 特性用于不同的目的。</li>
-<li><code>model</code> 选项可以用来避免这样的冲突：</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 自定义 v-model 的流程 */</span></span><br><span class="line">Vue.component(<span class="string">'base-checkbox'</span>, &#123;</span><br><span class="line">    model: &#123;</span><br><span class="line">        prop: <span class="string">'checked'</span>, <span class="comment">// 第一个参数 prop，主要用于 接收父组件 传来的数据</span></span><br><span class="line">        event: <span class="string">'change'</span>  <span class="comment">// 第二个参数 event，当触发该事件时，会改变父组件数据</span></span><br><span class="line">    &#125;,</span><br><span class="line">    props: &#123;</span><br><span class="line">        checked: <span class="built_in">Boolean</span></span><br><span class="line">    &#125;,</span><br><span class="line">    template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;input</span></span><br><span class="line"><span class="string">      type="checkbox"</span></span><br><span class="line"><span class="string">      v-bind:checked="checked"</span></span><br><span class="line"><span class="string">      v-on:change="$emit('change', $event.target.checked)"</span></span><br><span class="line"><span class="string">    &gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>现在 在这个组件上 使用 <code>v-model</code> 时：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-checkbox</span> <span class="attr">v-model</span>=<span class="string">"lovingVue"</span>&gt;</span><span class="tag">&lt;/<span class="name">base-checkbox</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>注意：这里的 <code>lovingVue</code> 的值 必须与 名为<code>checked</code> 的 prop 保持类型一致，因为 <code>lovingVue</code> 的值会传入到 这个名为 <code>checked</code> 的 prop 中。</li>
-<li>同时，当 <code>base-checkbox</code> 触发一个 <code>change</code> 事件并 <strong>附带</strong> <strong>一个新值</strong> 时，<strong>父组件的</strong> 这个 <code>lovingVue</code> 的属性将会被 <strong>更新</strong>。</li>
-<li>注意：你依然需要在组件的 <code>props</code> 选项里声明 <code>checked</code> 这个 prop。</li>
-</ol>
-<p><a href="https://www.jianshu.com/p/695ca638783a" target="_blank" rel="noopener">以下内容完全参考并引用大神博客</a>：</p>
-<p><strong>v-model父组件</strong> 写法：</p>
-<p><em>step-1:</em>   <em>绑定一个 data</em></p>
-<p><img src="/2019/05/11/自定义事件/6285858-4595d6ef3ebd2a9f.png" alt=""></p>
-<p><em>step-2:</em>  <em>data中的数据</em></p>
-<p><img src="/2019/05/11/自定义事件/6285858-c47a3608f488ed3c.png" alt=""></p>
-<p><strong>v-model子组件</strong> 写法：</p>
-<p><img src="/2019/05/11/自定义事件/6285858-c5c545840f9e4080.png" alt=""></p>
-<h1 id="将原生事件绑定到组件-Binding-Native-Events-to-Components"><a href="#将原生事件绑定到组件-Binding-Native-Events-to-Components" class="headerlink" title="将原生事件绑定到组件(Binding Native Events to Components)"></a>将原生事件绑定到组件(Binding Native Events to Components)</h1><ol>
-<li>你有可能有很多次想要在 <strong>一个组件的根元素上</strong> 直接监听 <strong>一个原生事件</strong>，这时，你可以使用 <code>v-on</code> 的 <code>.native</code> 修饰符：</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-input</span> <span class="attr">v-on:focus.native</span>=<span class="string">"onFocus"</span>&gt;</span><span class="tag">&lt;/<span class="name">base-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>在有的时候这会很有用，不过在你尝试监听一个类似 <code>&lt;input&gt;</code> 的非常 <strong>特定的元素</strong> 时，这并不是一个好主意，比如</li>
-<li>上述 <code>&lt;base-input&gt;</code> 组件可能做了如下重构，所以根元素实际上是一个 <code>&lt;label&gt;</code> 元素：</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 子组件 base-input </span><br><span class="line"><span class="tag">&lt;<span class="name">label</span></span></span><br><span class="line"><span class="tag">       &#123;&#123; <span class="attr">label</span> &#125;&#125;</span></span><br><span class="line">       &lt;input </span><br><span class="line">			v-bind="$attrs"</span><br><span class="line">			v-bind:value="value"</span><br><span class="line"> 			v-on:input="$emit('input', $event.target.value)"</span><br><span class="line">	   &gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">/**</span><br><span class="line">此时，父级的 .native 监听器将默认失败，它不会产生任何报错，</span><br><span class="line">但是 onFocus 处理函数 不会被调用</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>为了解决这个问题，Vue提供了一个 <code>$listeners</code> 属性，它是一个对象，里面包含了 <strong>作用在这个组件上的所有监听器</strong>。例如：</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    focus: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123; ... &#125;</span><br><span class="line">    input: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>有了这个 <code>$listeners</code> 属性，你就可以配合 <code>v-on=&quot;$listeners&quot;</code> 将所有的事件监听器 指向这个组件的某个特定的子元素。</li>
-<li>对于类似 <code>&lt;input&gt;</code> 的你 希望它也可以配合 <code>v-model</code> 工作的组件来说，为这些 <strong>监听器</strong> 创建一个类似 下列 <code>inputListeners</code> 的 <strong>计算属性</strong> 通常是非常有用的：</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'base-input'</span>, &#123;</span><br><span class="line">    inheritAttrs: <span class="literal">false</span>,</span><br><span class="line">    props: [ <span class="string">'label'</span>, <span class="string">'value'</span> ],</span><br><span class="line">    computed: &#123;</span><br><span class="line">        inputListeners: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> vm = <span class="keyword">this</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// Object.assign 将所有的对象合并为一个新对象</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;,</span><br><span class="line">                                 <span class="comment">// 我们从父级添加所有的监听器</span></span><br><span class="line">                                 <span class="keyword">this</span>.$listeners,</span><br><span class="line">                                 </span><br><span class="line">                                 <span class="comment">// 然后我们添加自定义监听器，</span></span><br><span class="line">                                 <span class="comment">// 或 覆写一些监听器的行为</span></span><br><span class="line">                                 &#123;</span><br><span class="line">                <span class="comment">// 这里确保组件配合 v-model 的工作</span></span><br><span class="line">                input: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">                    vm.$emit(<span class="string">'input'</span>, event.target.value)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;label&gt;</span></span><br><span class="line"><span class="string">      &#123;&#123; label &#125;&#125;</span></span><br><span class="line"><span class="string">      &lt;input</span></span><br><span class="line"><span class="string">        v-bind="$attrs"</span></span><br><span class="line"><span class="string">        v-bind:value="value"</span></span><br><span class="line"><span class="string">        v-on="inputListeners"</span></span><br><span class="line"><span class="string">      &gt;</span></span><br><span class="line"><span class="string">    &lt;/label&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="sync-修饰符"><a href="#sync-修饰符" class="headerlink" title=".sync 修饰符"></a>.sync 修饰符</h1><p> +++待完善+++</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/11/自定义事件/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1644,162 +1851,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/07/数据结构与算法/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="人模狗样的人儿">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="人模狗样的人儿">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/07/数据结构与算法/" itemprop="url">数据结构与算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-07T10:30:39+08:00">
-                2019-04-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>动态规划实现斐波拉契数列</p>
-</li>
-<li><p>动态规划实现字符串问题</p>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> hasStar = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> noStar = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> f1=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> fTemp = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="number">3</span>;i++)&#123;</span><br><span class="line">    fTemp = hasStar + noStar*<span class="number">2</span>;</span><br><span class="line">    hasStar = noStar;</span><br><span class="line">    noStar = fTemp - noStar;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(fTemp);</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-	<div>
-	  
-	</div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1847,7 +1903,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -88,7 +88,7 @@
 <meta property="og:description" content="新建实例(Creating a Vue Instance) 每个Vue应用都是通过用 Vue 函数创建一个新的Vue实例开始的。  123var vm = new Vue(&amp;#123;    // 选项&amp;#125;)  当创建一个Vue实例时，可以传入一个选项对象(options object)。而如何使用这些选项来创建你想要的行为，正是该文档的核心内容。完整的选项列表可参考 API文档。 一个V">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cn.vuejs.org/images/lifecycle.png">
-<meta property="og:updated_time" content="2019-03-28T00:42:48.205Z">
+<meta property="og:updated_time" content="2019-05-12T12:55:30.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue Instance">
 <meta name="twitter:description" content="新建实例(Creating a Vue Instance) 每个Vue应用都是通过用 Vue 函数创建一个新的Vue实例开始的。  123var vm = new Vue(&amp;#123;    // 选项&amp;#125;)  当创建一个Vue实例时，可以传入一个选项对象(options object)。而如何使用这些选项来创建你想要的行为，正是该文档的核心内容。完整的选项列表可参考 API文档。 一个V">
@@ -421,7 +421,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span>&#125;</span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">"#example"</span>,</span><br><span class="line">    data: data</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">vm.$data === data <span class="comment">// =&gt; true</span></span><br><span class="line">vm.$el === <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>)  <span class="comment">// =&gt; true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// $watch 是一个实例方法</span></span><br><span class="line">vm.$watch(<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newValue, oldValue</span>)</span>&#123;</span><br><span class="line">   <span class="comment">// 这个回调将在 vm.a 变化后调用</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h2 id="实例生命周期钩子-Instance-Lifecycle-Hooks"><a href="#实例生命周期钩子-Instance-Lifecycle-Hooks" class="headerlink" title="实例生命周期钩子(Instance Lifecycle Hooks)"></a>实例生命周期钩子(Instance Lifecycle Hooks)</h2><ol>
 <li>每个Vue实例在被创建时都要经过一系列的初始化过程(a series of initialization steps)</li>
-<li>这个过程包含 设置数据监听(set up data observation)、编译模板(compile the template)、将实例挂载到DOM(mount the instance to the DOM)、并在数据变化时更新DOM等(update the DOM when data changes)</li>
+<li>这个过程包含 <strong>设置数据监听(set up data observation)</strong> 、<strong>编译模板(compile the template)</strong>、<strong>将实例挂载到DOM(mount the instance to the DOM)</strong>、<strong>并在数据变化时更新DOM等(update the DOM when data changes)</strong></li>
 <li>同时在这个过程中也会运行一些叫做 <strong>生命周期钩子(Lifecycle Hooks)</strong> 的函数，给了用户在不同阶段添加自定义代码的机会。</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 比如 `created` 钩子可以用来在一个实例被创建之后执行代码</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">        a: <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 用于在实例被创建之后执行代码</span></span><br><span class="line">    created: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">// *this 指向vm实例（以后出现 vm 都表示Vue实例</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'a is: '</span> + <span class="keyword">this</span>.a )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// =&gt; "a is: 1"</span></span><br></pre></td></tr></table></figure>
@@ -562,7 +562,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
