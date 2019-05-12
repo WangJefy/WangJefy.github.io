@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[过滤器]]></title>
+    <url>%2F2019%2F05%2F12%2F%E8%BF%87%E6%BB%A4%E5%99%A8%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[插槽]]></title>
+    <url>%2F2019%2F05%2F12%2F%E6%8F%92%E6%A7%BD%2F</url>
+    <content type="text"><![CDATA[插槽内容(Slot Content)]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Vue.js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[自定义事件]]></title>
     <url>%2F2019%2F05%2F11%2F%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[事件名(Event Name) 不同于 组件 和 prop，事件名 不存在任何自动化的大小写转换。 触发的事件名是需要 完全匹配 监听这个事件所用的名称。 1this.$emit('myEvent') 12&lt;!-- 没有效果 --&gt;&lt;my-component v-on:my-event="doSomething"&gt;&lt;/my-component&gt; 不同于组件和prop，事件名不会被用作一个JavaScript变量名或属性名，所以就没有理由使用 camelCase 或 PascalCase了 并且 v-on 事件监听器在 DOM 模板中会被自动转换为 全小写，所以 v-on:myEvent将会变成 v-on:myevent——导致 myEvent 不可能被监听到。 因此我们强烈建议 始终使用 kebab-case 的事件名 自定义组件的v-model]]></content>
+    <content type="text"><![CDATA[事件名(Event Names) 不同于 组件 和 prop，事件名 不存在任何自动化的大小写转换。 触发的事件名是需要 完全匹配 监听这个事件所用的名称。 1this.$emit('myEvent') 12&lt;!-- 没有效果 --&gt;&lt;my-component v-on:my-event="doSomething"&gt;&lt;/my-component&gt; 不同于组件和prop，事件名不会被用作一个JavaScript变量名或属性名，所以就没有理由使用 camelCase 或 PascalCase了 并且 v-on 事件监听器在 DOM 模板中会被自动转换为 全小写，所以 v-on:myEvent将会变成 v-on:myevent——导致 myEvent 不可能被监听到。 因此我们强烈建议 始终使用 kebab-case 的事件名 自定义-组件的v-model[V2.2.0+新增] 一个组件上的 v-model 默认会利用名为 value 的 prop 和 名为 input 的event. 1234567891011121314&lt;input v-model="something"&gt;&lt;=== 上面的 v-model 指令其实是 下面的语法糖包装而成 ===&gt;&lt;input :value="something" @input="something = $event.target.value"&gt; &lt;=== 在一个自定义组件上使用 v-model 时，会简化为： ===&gt;&lt;custom-input :value="something" @input="value =&gt; &#123; something = value &#125;"&gt;&lt;/custom-input&gt; &lt;=== 因此，当我们去自定义一个组件的 v-model 时 ===&gt;&lt;=== 就需要设置两个参数：prop 和 event ===&gt; 但是，像单选框、复选框等类型的 输入控件可能会将 value 特性用于不同的目的。 model 选项可以用来避免这样的冲突： 1234567891011121314151617/** 自定义 v-model 的流程 */Vue.component('base-checkbox', &#123; model: &#123; prop: 'checked', // 第一个参数 prop，主要用于 接收父组件 传来的数据 event: 'change' // 第二个参数 event，当触发该事件时，会改变父组件数据 &#125;, props: &#123; checked: Boolean &#125;, template: ` &lt;input type="checkbox" v-bind:checked="checked" v-on:change="$emit('change', $event.target.checked)" &gt; `&#125;) 现在 在这个组件上 使用 v-model 时： 1&lt;base-checkbox v-model="lovingVue"&gt;&lt;/base-checkbox&gt; 注意：这里的 lovingVue 的值 必须与 名为checked 的 prop 保持类型一致，因为 lovingVue 的值会传入到 这个名为 checked 的 prop 中。 同时，当 base-checkbox 触发一个 change 事件并 附带 一个新值 时，父组件的 这个 lovingVue 的属性将会被 更新。 注意：你依然需要在组件的 props 选项里声明 checked 这个 prop。 以下内容完全参考并引用大神博客： v-model父组件 写法： step-1: 绑定一个 data step-2: data中的数据 v-model子组件 写法： 将原生事件绑定到组件(Binding Native Events to Components) 你有可能有很多次想要在 一个组件的根元素上 直接监听 一个原生事件，这时，你可以使用 v-on 的 .native 修饰符： 1&lt;base-input v-on:focus.native="onFocus"&gt;&lt;/base-input&gt; 在有的时候这会很有用，不过在你尝试监听一个类似 &lt;input&gt; 的非常 特定的元素 时，这并不是一个好主意，比如 上述 &lt;base-input&gt; 组件可能做了如下重构，所以根元素实际上是一个 &lt;label&gt; 元素： 12345678910111213// 子组件 base-input &lt;label &#123;&#123; label &#125;&#125; &lt;input v-bind="$attrs" v-bind:value="value" v-on:input="$emit('input', $event.target.value)" &gt;&lt;/label&gt;/**此时，父级的 .native 监听器将默认失败，它不会产生任何报错，但是 onFocus 处理函数 不会被调用*/ 为了解决这个问题，Vue提供了一个 $listeners 属性，它是一个对象，里面包含了 作用在这个组件上的所有监听器。例如： 1234&#123; focus: function(event) &#123; ... &#125; input: function(event) &#123; ... &#125;&#125; 有了这个 $listeners 属性，你就可以配合 v-on=&quot;$listeners&quot; 将所有的事件监听器 指向这个组件的某个特定的子元素。 对于类似 &lt;input&gt; 的你 希望它也可以配合 v-model 工作的组件来说，为这些 监听器 创建一个类似 下列 inputListeners 的 计算属性 通常是非常有用的： 12345678910111213141516171819202122232425262728293031323334Vue.component('base-input', &#123; inheritAttrs: false, props: [ 'label', 'value' ], computed: &#123; inputListeners: function()&#123; var vm = this; // Object.assign 将所有的对象合并为一个新对象 return Object.assign(&#123;&#125;, // 我们从父级添加所有的监听器 this.$listeners, // 然后我们添加自定义监听器， // 或 覆写一些监听器的行为 &#123; // 这里确保组件配合 v-model 的工作 input: function(event)&#123; vm.$emit('input', event.target.value) &#125; &#125; ) &#125; &#125;, template: ` &lt;label&gt; &#123;&#123; label &#125;&#125; &lt;input v-bind="$attrs" v-bind:value="value" v-on="inputListeners" &gt; &lt;/label&gt; `&#125;) .sync 修饰符 +++待完善+++]]></content>
       <categories>
         <category>前端</category>
       </categories>

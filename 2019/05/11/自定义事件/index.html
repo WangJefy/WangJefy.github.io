@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="事件名(Event Name) 不同于 组件 和 prop，事件名 不存在任何自动化的大小写转换。 触发的事件名是需要 完全匹配 监听这个事件所用的名称。  1this.$emit(&apos;myEvent&apos;) 12&amp;lt;!-- 没有效果 --&amp;gt;&amp;lt;my-component v-on:my-event=&quot;doSomething&quot;&amp;gt;&amp;lt;/my-component&amp;gt;  不同于组件和">
+<meta name="description" content="事件名(Event Names) 不同于 组件 和 prop，事件名 不存在任何自动化的大小写转换。 触发的事件名是需要 完全匹配 监听这个事件所用的名称。  1this.$emit(&apos;myEvent&apos;) 12&amp;lt;!-- 没有效果 --&amp;gt;&amp;lt;my-component v-on:my-event=&quot;doSomething&quot;&amp;gt;&amp;lt;/my-component&amp;gt;  不同于组件">
 <meta name="keywords" content="Vue.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义事件">
 <meta property="og:url" content="http://yoursite.com/2019/05/11/自定义事件/index.html">
 <meta property="og:site_name" content="人模狗样的人儿">
-<meta property="og:description" content="事件名(Event Name) 不同于 组件 和 prop，事件名 不存在任何自动化的大小写转换。 触发的事件名是需要 完全匹配 监听这个事件所用的名称。  1this.$emit(&apos;myEvent&apos;) 12&amp;lt;!-- 没有效果 --&amp;gt;&amp;lt;my-component v-on:my-event=&quot;doSomething&quot;&amp;gt;&amp;lt;/my-component&amp;gt;  不同于组件和">
+<meta property="og:description" content="事件名(Event Names) 不同于 组件 和 prop，事件名 不存在任何自动化的大小写转换。 触发的事件名是需要 完全匹配 监听这个事件所用的名称。  1this.$emit(&apos;myEvent&apos;) 12&amp;lt;!-- 没有效果 --&amp;gt;&amp;lt;my-component v-on:my-event=&quot;doSomething&quot;&amp;gt;&amp;lt;/my-component&amp;gt;  不同于组件">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-11T11:42:14.123Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/11/自定义事件/6285858-4595d6ef3ebd2a9f.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/11/自定义事件/6285858-c47a3608f488ed3c.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/11/自定义事件/6285858-c5c545840f9e4080.png">
+<meta property="og:updated_time" content="2019-05-12T06:40:56.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义事件">
-<meta name="twitter:description" content="事件名(Event Name) 不同于 组件 和 prop，事件名 不存在任何自动化的大小写转换。 触发的事件名是需要 完全匹配 监听这个事件所用的名称。  1this.$emit(&apos;myEvent&apos;) 12&amp;lt;!-- 没有效果 --&amp;gt;&amp;lt;my-component v-on:my-event=&quot;doSomething&quot;&amp;gt;&amp;lt;/my-component&amp;gt;  不同于组件和">
+<meta name="twitter:description" content="事件名(Event Names) 不同于 组件 和 prop，事件名 不存在任何自动化的大小写转换。 触发的事件名是需要 完全匹配 监听这个事件所用的名称。  1this.$emit(&apos;myEvent&apos;) 12&amp;lt;!-- 没有效果 --&amp;gt;&amp;lt;my-component v-on:my-event=&quot;doSomething&quot;&amp;gt;&amp;lt;/my-component&amp;gt;  不同于组件">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/11/自定义事件/6285858-4595d6ef3ebd2a9f.png">
 
 
 
@@ -386,7 +390,7 @@
       
 
       
-        <h1 id="事件名-Event-Name"><a href="#事件名-Event-Name" class="headerlink" title="事件名(Event Name)"></a>事件名(Event Name)</h1><ol>
+        <h1 id="事件名-Event-Names"><a href="#事件名-Event-Names" class="headerlink" title="事件名(Event Names)"></a>事件名(Event Names)</h1><ol>
 <li>不同于 <strong>组件</strong> 和 <strong>prop</strong>，事件名 <strong>不存在任何自动化的大小写转换</strong>。</li>
 <li>触发的事件名是需要 <strong>完全匹配</strong> 监听这个事件所用的名称。</li>
 </ol>
@@ -397,7 +401,50 @@
 <li>并且 <code>v-on</code> 事件监听器在 DOM 模板中会被自动转换为 全小写，所以 <code>v-on:myEvent</code>将会变成 <code>v-on:myevent</code>——导致 <code>myEvent</code> 不可能被监听到。</li>
 <li>因此我们强烈建议 <strong>始终使用 kebab-case 的事件名</strong></li>
 </ol>
-<h1 id="自定义组件的v-model"><a href="#自定义组件的v-model" class="headerlink" title="自定义组件的v-model"></a>自定义组件的v-model</h1>
+<h1 id="自定义-组件的v-model-V2-2-0-新增"><a href="#自定义-组件的v-model-V2-2-0-新增" class="headerlink" title="自定义-组件的v-model[V2.2.0+新增]"></a>自定义-组件的v-model[V2.2.0+新增]</h1><ol>
+<li>一个组件上的 <code>v-model</code> 默认会利用名为 <code>value</code> 的 prop 和 名为 <code>input</code> 的event.</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"something"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">===</span> 上面的 <span class="attr">v-model</span> 指令其实是 下面的语法糖包装而成 ===&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> </span></span><br><span class="line"><span class="tag">	<span class="attr">:value</span>=<span class="string">"something"</span></span></span><br><span class="line"><span class="tag">	@<span class="attr">input</span>=<span class="string">"something = $event.target.value"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;<span class="name">===</span> 在一个自定义组件上使用 <span class="attr">v-model</span> 时，会简化为： ===&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">custom-input</span></span></span><br><span class="line"><span class="tag">              <span class="attr">:value</span>=<span class="string">"something"</span></span></span><br><span class="line"><span class="tag">              @<span class="attr">input</span>=<span class="string">"value =&gt; &#123; something = value &#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">custom-input</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;<span class="name">===</span> 因此，当我们去自定义一个组件的 <span class="attr">v-model</span> 时 ===&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">===</span> 就需要设置两个参数：<span class="attr">prop</span> 和 <span class="attr">event</span> ===&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>但是，像单选框、复选框等类型的 输入控件可能会将 <code>value</code> 特性用于不同的目的。</li>
+<li><code>model</code> 选项可以用来避免这样的冲突：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 自定义 v-model 的流程 */</span></span><br><span class="line">Vue.component(<span class="string">'base-checkbox'</span>, &#123;</span><br><span class="line">    model: &#123;</span><br><span class="line">        prop: <span class="string">'checked'</span>, <span class="comment">// 第一个参数 prop，主要用于 接收父组件 传来的数据</span></span><br><span class="line">        event: <span class="string">'change'</span>  <span class="comment">// 第二个参数 event，当触发该事件时，会改变父组件数据</span></span><br><span class="line">    &#125;,</span><br><span class="line">    props: &#123;</span><br><span class="line">        checked: <span class="built_in">Boolean</span></span><br><span class="line">    &#125;,</span><br><span class="line">    template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;input</span></span><br><span class="line"><span class="string">      type="checkbox"</span></span><br><span class="line"><span class="string">      v-bind:checked="checked"</span></span><br><span class="line"><span class="string">      v-on:change="$emit('change', $event.target.checked)"</span></span><br><span class="line"><span class="string">    &gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>现在 在这个组件上 使用 <code>v-model</code> 时：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-checkbox</span> <span class="attr">v-model</span>=<span class="string">"lovingVue"</span>&gt;</span><span class="tag">&lt;/<span class="name">base-checkbox</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>注意：这里的 <code>lovingVue</code> 的值 必须与 名为<code>checked</code> 的 prop 保持类型一致，因为 <code>lovingVue</code> 的值会传入到 这个名为 <code>checked</code> 的 prop 中。</li>
+<li>同时，当 <code>base-checkbox</code> 触发一个 <code>change</code> 事件并 <strong>附带</strong> <strong>一个新值</strong> 时，<strong>父组件的</strong> 这个 <code>lovingVue</code> 的属性将会被 <strong>更新</strong>。</li>
+<li>注意：你依然需要在组件的 <code>props</code> 选项里声明 <code>checked</code> 这个 prop。</li>
+</ol>
+<p><a href="https://www.jianshu.com/p/695ca638783a" target="_blank" rel="noopener">以下内容完全参考并引用大神博客</a>：</p>
+<p><strong>v-model父组件</strong> 写法：</p>
+<p><em>step-1:</em>   <em>绑定一个 data</em></p>
+<p><img src="/2019/05/11/自定义事件/6285858-4595d6ef3ebd2a9f.png" alt=""></p>
+<p><em>step-2:</em>  <em>data中的数据</em></p>
+<p><img src="/2019/05/11/自定义事件/6285858-c47a3608f488ed3c.png" alt=""></p>
+<p><strong>v-model子组件</strong> 写法：</p>
+<p><img src="/2019/05/11/自定义事件/6285858-c5c545840f9e4080.png" alt=""></p>
+<h1 id="将原生事件绑定到组件-Binding-Native-Events-to-Components"><a href="#将原生事件绑定到组件-Binding-Native-Events-to-Components" class="headerlink" title="将原生事件绑定到组件(Binding Native Events to Components)"></a>将原生事件绑定到组件(Binding Native Events to Components)</h1><ol>
+<li>你有可能有很多次想要在 <strong>一个组件的根元素上</strong> 直接监听 <strong>一个原生事件</strong>，这时，你可以使用 <code>v-on</code> 的 <code>.native</code> 修饰符：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-input</span> <span class="attr">v-on:focus.native</span>=<span class="string">"onFocus"</span>&gt;</span><span class="tag">&lt;/<span class="name">base-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在有的时候这会很有用，不过在你尝试监听一个类似 <code>&lt;input&gt;</code> 的非常 <strong>特定的元素</strong> 时，这并不是一个好主意，比如</li>
+<li>上述 <code>&lt;base-input&gt;</code> 组件可能做了如下重构，所以根元素实际上是一个 <code>&lt;label&gt;</code> 元素：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 子组件 base-input </span><br><span class="line"><span class="tag">&lt;<span class="name">label</span></span></span><br><span class="line"><span class="tag">       &#123;&#123; <span class="attr">label</span> &#125;&#125;</span></span><br><span class="line">       &lt;input </span><br><span class="line">			v-bind="$attrs"</span><br><span class="line">			v-bind:value="value"</span><br><span class="line"> 			v-on:input="$emit('input', $event.target.value)"</span><br><span class="line">	   &gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">/**</span><br><span class="line">此时，父级的 .native 监听器将默认失败，它不会产生任何报错，</span><br><span class="line">但是 onFocus 处理函数 不会被调用</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>为了解决这个问题，Vue提供了一个 <code>$listeners</code> 属性，它是一个对象，里面包含了 <strong>作用在这个组件上的所有监听器</strong>。例如：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    focus: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123; ... &#125;</span><br><span class="line">    input: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>有了这个 <code>$listeners</code> 属性，你就可以配合 <code>v-on=&quot;$listeners&quot;</code> 将所有的事件监听器 指向这个组件的某个特定的子元素。</li>
+<li>对于类似 <code>&lt;input&gt;</code> 的你 希望它也可以配合 <code>v-model</code> 工作的组件来说，为这些 <strong>监听器</strong> 创建一个类似 下列 <code>inputListeners</code> 的 <strong>计算属性</strong> 通常是非常有用的：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'base-input'</span>, &#123;</span><br><span class="line">    inheritAttrs: <span class="literal">false</span>,</span><br><span class="line">    props: [ <span class="string">'label'</span>, <span class="string">'value'</span> ],</span><br><span class="line">    computed: &#123;</span><br><span class="line">        inputListeners: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> vm = <span class="keyword">this</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// Object.assign 将所有的对象合并为一个新对象</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;,</span><br><span class="line">                                 <span class="comment">// 我们从父级添加所有的监听器</span></span><br><span class="line">                                 <span class="keyword">this</span>.$listeners,</span><br><span class="line">                                 </span><br><span class="line">                                 <span class="comment">// 然后我们添加自定义监听器，</span></span><br><span class="line">                                 <span class="comment">// 或 覆写一些监听器的行为</span></span><br><span class="line">                                 &#123;</span><br><span class="line">                <span class="comment">// 这里确保组件配合 v-model 的工作</span></span><br><span class="line">                input: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">                    vm.$emit(<span class="string">'input'</span>, event.target.value)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;label&gt;</span></span><br><span class="line"><span class="string">      &#123;&#123; label &#125;&#125;</span></span><br><span class="line"><span class="string">      &lt;input</span></span><br><span class="line"><span class="string">        v-bind="$attrs"</span></span><br><span class="line"><span class="string">        v-bind:value="value"</span></span><br><span class="line"><span class="string">        v-on="inputListeners"</span></span><br><span class="line"><span class="string">      &gt;</span></span><br><span class="line"><span class="string">    &lt;/label&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="sync-修饰符"><a href="#sync-修饰符" class="headerlink" title=".sync 修饰符"></a>.sync 修饰符</h1><p> +++待完善+++</p>
+
       
     </div>
     
@@ -445,6 +492,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/12/插槽/" rel="prev" title="插槽">
+                插槽 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -523,7 +574,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -606,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事件名-Event-Name"><span class="nav-number">1.</span> <span class="nav-text">事件名(Event Name)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义组件的v-model"><span class="nav-number">2.</span> <span class="nav-text">自定义组件的v-model</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事件名-Event-Names"><span class="nav-number">1.</span> <span class="nav-text">事件名(Event Names)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义-组件的v-model-V2-2-0-新增"><span class="nav-number">2.</span> <span class="nav-text">自定义-组件的v-model[V2.2.0+新增]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将原生事件绑定到组件-Binding-Native-Events-to-Components"><span class="nav-number">3.</span> <span class="nav-text">将原生事件绑定到组件(Binding Native Events to Components)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sync-修饰符"><span class="nav-number">4.</span> <span class="nav-text">.sync 修饰符</span></a></li></ol></div>
             
 
           </div>
