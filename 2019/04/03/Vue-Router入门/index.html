@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="人模狗样的人儿">
 <meta property="og:description" content="安装NPM1npm install vue-router  如果在一个模块化工程中使用它，必须要通过Vue.use()明确地安装路由功能：  1234import Vue from &apos;vue&apos;import VueRouter from &apos;vue-router&apos;Vue.use(VueRouter)  如果使用全局的script标签，则无须如此（手动安装）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-14T14:33:52.205Z">
+<meta property="og:updated_time" content="2019-05-13T10:44:54.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue Router入门">
 <meta name="twitter:description" content="安装NPM1npm install vue-router  如果在一个模块化工程中使用它，必须要通过Vue.use()明确地安装路由功能：  1234import Vue from &apos;vue&apos;import VueRouter from &apos;vue-router&apos;Vue.use(VueRouter)  如果使用全局的script标签，则无须如此（手动安装）">
@@ -401,7 +401,7 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/vuejs/vue-router.git node_modules/vue-router</span><br><span class="line"><span class="built_in">cd</span> node_modules/vue-router</span><br><span class="line">npm install</span><br><span class="line">npm run build</span><br></pre></td></tr></table></figure>
 <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><ol>
 <li>Vue Router 是 Vue.js 官方的路由管理器(Vue Router is the offical router for Vue.js)</li>
-<li>它和Vue.js的核心深度集成，让构建单页面应用变得易如反掌。包含的功能有：</li>
+<li>它和Vue.js的核心深度集成，让构建 <strong>单页面应用</strong> 变得易如反掌。包含的功能有：</li>
 </ol>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">* </span>嵌套的路由/视图表(Nested route/view mapping)</span><br><span class="line"><span class="bullet">* </span>模块化的、基于组件的路由配置(Modular, component-based router configuration)</span><br><span class="line"><span class="bullet">* </span>路由参数、查询、通配符(Route params, query, wildcards)</span><br><span class="line"><span class="bullet">* </span>基于Vue.js过渡系统的视图过渡效果(View transition effects powered by Vue.js' transition system)</span><br><span class="line"><span class="bullet">* </span>细粒度的导航控制(Fine-grained navigation control)</span><br><span class="line"><span class="bullet">* </span>带有自动激活的CSS class的链接(Links with automatic active CSS classes)</span><br><span class="line"><span class="bullet">* </span>HTML5历史模式或hash模式，在IE9中自动降级(HTML5 history mode or hash mode, with auto-fallback in IE9)</span><br><span class="line"><span class="bullet">* </span>自定义的滚动条行为(Customizable Scroll Behavior)</span><br></pre></td></tr></table></figure>
 <ol start="3">
@@ -438,7 +438,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> User = &#123;</span><br><span class="line">	template: <span class="string">'&lt;div&gt;User&lt;/div&gt;'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">    routes: [</span><br><span class="line">        <span class="comment">// 动态路径参数，以冒号开头</span></span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">'/user/:id'</span>, <span class="attr">component</span>: User &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <ol start="4">
 <li>现在呢，像 <code>/user/foo</code> 和 <code>/user/bar</code> 都将映射到相同的路由(Now URLs like /user/foo and /user/bar will both map to the same route)</li>
-<li>一个“路由参数(dynamic segment)”使用冒号 <code>:</code> 标记。</li>
+<li>一个动态“路径参数(dynamic segment)”使用冒号 <code>:</code> 标记。</li>
 <li>当匹配到一个路由时(When a route is matched, the value of the dynamic segments will be exposed as  <code>this.$route.params</code>)，参数值会被设置到 <code>this.$route.params</code>，可以在每个组件内使用。</li>
 <li>于是，我们可以更新 <code>User</code> 模板，输出当前用户的ID：</li>
 </ol>
@@ -471,12 +471,12 @@
 <li>除了 <code>$route.params</code> 外， <code>$route</code> 对象还提供了其它有用的信息。例如，<code>$route.query</code> (如果URL中有查询参数)、<code>$route.hash</code> 等等。</li>
 </ol>
 <h3 id="响应路由参数的变化-Reacting-to-Params-Changes"><a href="#响应路由参数的变化-Reacting-to-Params-Changes" class="headerlink" title="响应路由参数的变化(Reacting to Params Changes)"></a>响应路由参数的变化(Reacting to Params Changes)</h3><ol>
-<li>提醒一下，当使用路由参数时，例如从 <code>/user/foo</code> 导航到 <code>/user/bar</code> , <strong>原来的组件实例会被复用</strong>。因为两个路由都渲染同一个组件，比起销毁再创建，复用则显得更加高效。</li>
+<li>提醒一下，<strong>当使用路由参数时</strong>，例如从 <code>/user/foo</code> 导航到 <code>/user/bar</code> , <strong>原来的组件实例会被复用</strong>。因为两个路由都渲染同一个组件，比起销毁再创建，复用则显得更加高效。</li>
 <li><strong>不过，这也意味着组件的生命周期钩子不会再被调用</strong> <strong>***</strong></li>
 <li>复用组件时，想对路由参数的变化作出响应的话，你可以简单地 watch(监测变化) <code>$route</code> 对象：</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> User = &#123;</span><br><span class="line">    template: <span class="string">'...'</span>,</span><br><span class="line">    watch: &#123;</span><br><span class="line">        <span class="string">'$route'</span>( to, <span class="keyword">from</span> )&#123;</span><br><span class="line">            <span class="comment">// 对路由变化作出响应。。。</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>或者使用2.2中引入的 <code>beforeRouteUpdate</code> 导航守卫：</p>
+<p>或者使用2.2中引入的 <code>beforeRouteUpdate</code> <a href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html" target="_blank" rel="noopener">导航守卫</a>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> User = &#123;</span><br><span class="line">    template: <span class="string">'...'</span>,</span><br><span class="line">    beforeRouteUpdate(to, <span class="keyword">from</span>, next)&#123;</span><br><span class="line">        <span class="comment">// react to route changes...</span></span><br><span class="line">        <span class="comment">// don't forget to call next()</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="捕获所有路由-或-404-Not-found-路由-Catch-all-404-Not-found-Route"><a href="#捕获所有路由-或-404-Not-found-路由-Catch-all-404-Not-found-Route" class="headerlink" title="捕获所有路由 或 404 Not found 路由(Catch all / 404 Not found Route)"></a>捕获所有路由 或 404 Not found 路由(Catch all / 404 Not found Route)</h3><ol>
 <li>常规参数只会 匹配被 <code>/</code> 分隔的URL片段中的字符。如果想匹配 <strong>任意路径</strong>，我们可以使用通配符 <code>*</code> :</li>
