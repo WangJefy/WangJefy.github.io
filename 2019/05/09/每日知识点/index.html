@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="ES6中的Array.from()方法类数组对象 定义：拥有一个数值length属性 和 对应非负整数属性 的 对象    1234567891011121314//以下代码为一个常规对象增加了一些属性， 使其变成类数组对象var a = &amp;#123;&amp;#125;; // 从一个常规空对象开始// 添加一些属性，称为“类数组”var i = 0;while(i &amp;lt; 10)&amp;#123;">
+<meta name="description" content="ES6中的Array.from()方法类数组对象 定义：拥有一个数值length属性 和 对应非负整数属性 的 对象">
 <meta name="keywords" content="每日一点点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每日知识点">
 <meta property="og:url" content="http://yoursite.com/2019/05/09/每日知识点/index.html">
 <meta property="og:site_name" content="人模狗样的人儿">
-<meta property="og:description" content="ES6中的Array.from()方法类数组对象 定义：拥有一个数值length属性 和 对应非负整数属性 的 对象    1234567891011121314//以下代码为一个常规对象增加了一些属性， 使其变成类数组对象var a = &amp;#123;&amp;#125;; // 从一个常规空对象开始// 添加一些属性，称为“类数组”var i = 0;while(i &amp;lt; 10)&amp;#123;">
+<meta property="og:description" content="ES6中的Array.from()方法类数组对象 定义：拥有一个数值length属性 和 对应非负整数属性 的 对象">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-09T13:14:34.757Z">
+<meta property="og:updated_time" content="2019-05-14T01:47:58.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每日知识点">
-<meta name="twitter:description" content="ES6中的Array.from()方法类数组对象 定义：拥有一个数值length属性 和 对应非负整数属性 的 对象    1234567891011121314//以下代码为一个常规对象增加了一些属性， 使其变成类数组对象var a = &amp;#123;&amp;#125;; // 从一个常规空对象开始// 添加一些属性，称为“类数组”var i = 0;while(i &amp;lt; 10)&amp;#123;">
+<meta name="twitter:description" content="ES6中的Array.from()方法类数组对象 定义：拥有一个数值length属性 和 对应非负整数属性 的 对象">
 
 
 
@@ -389,6 +389,7 @@
         <h1 id="ES6中的Array-from-方法"><a href="#ES6中的Array-from-方法" class="headerlink" title="ES6中的Array.from()方法"></a>ES6中的Array.from()方法</h1><h2 id="类数组对象"><a href="#类数组对象" class="headerlink" title="类数组对象"></a>类数组对象</h2><ol>
 <li>定义：<strong>拥有一个数值length属性</strong> 和 <strong>对应非负整数属性</strong> 的 <em>对象</em>  </li>
 </ol>
+<a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以下代码为一个常规对象增加了一些属性， 使其变成类数组对象</span></span><br><span class="line"><span class="keyword">var</span> a = &#123;&#125;; <span class="comment">// 从一个常规空对象开始</span></span><br><span class="line"><span class="comment">// 添加一些属性，称为“类数组”</span></span><br><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(i &lt; <span class="number">10</span>)&#123;</span><br><span class="line">    a[i] = i * i;</span><br><span class="line">    i++;</span><br><span class="line">&#125;</span><br><span class="line">a.length = i;</span><br><span class="line"><span class="comment">/** 上述代码创建的类数组对象为：</span></span><br><span class="line"><span class="comment">&#123;0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, length: 10&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// Arguments对象就是一个类数组对象</span></span><br><span class="line"><span class="comment">// 在客户端JavaScript中，一些DOM方法(如document.getElementByTagName())也返回类数组对象</span></span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>如何检测是否为一个类数组对象</li>
