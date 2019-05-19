@@ -388,8 +388,7 @@
 
       
         
-          
-            <h1 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h1><ol>
+          <h1 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h1><ol>
 <li><strong>总是打印 对象</strong> </li>
 </ol>
 <p>使用 <code>{}</code> 将要打印的变量包围起来，即可打印变量值，又打印变量名</p>
@@ -398,13 +397,13 @@
 <li>使用 <strong>console.table</strong> 打印多条数据</li>
 </ol>
 <p>如果要打印的是一个数组，每个元素都是一个对象，建议使用 <strong>console.table</strong> 表格化打印数据</p>
-<p><img src="/2019/05/18/vue-devtools使用/table.jpg" alt=""></p>
-<ol start="3">
-<li>给 <strong>log</strong> 加点颜色</li>
-</ol>
-<p><img src="/2019/05/18/vue-devtools使用/color.jpg" alt=""></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/18/vue-devtools使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -826,8 +825,8 @@
 <li>Vue 实现了一套 <strong>内容分发(content distribution)</strong> 的API，这套API的设计灵感源自 Web Components 规范草案，将 <code>&lt;slot&gt;</code> 元素作为承载分发内容的出口。</li>
 <li>它允许你像这样 合成组件：</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">navigation-link</span> <span class="attr">url</span>=<span class="string">"/profile"</span>&gt;</span></span><br><span class="line">	Your Profile // 具体要分发的 内容 content</span><br><span class="line"><span class="tag">&lt;/<span class="name">navigation-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 然后 你在 <span class="tag">&lt;<span class="name">navigation-link</span>&gt;</span> 的模板中，可能会写为：</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span></span></span><br><span class="line"><span class="tag">   <span class="attr">v-bind:href</span>=<span class="string">"url"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">class</span>=<span class="string">"nav-link"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- navigation-link 标签中 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">navigation-link</span> <span class="attr">url</span>=<span class="string">"/profile"</span>&gt;</span></span><br><span class="line">	Your Profile // 具体要分发的 内容 content</span><br><span class="line"><span class="tag">&lt;/<span class="name">navigation-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 在 &lt;navigation-link&gt; 的模板中，可能会写为：--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span></span></span><br><span class="line"><span class="tag">   <span class="attr">v-bind:href</span>=<span class="string">"url"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">class</span>=<span class="string">"nav-link"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>当 <strong>组件渲染时</strong>，<code>&lt;slot&gt;&lt;/slot&gt;</code> 将会被替换为 ”Your Profile”</li>
 </ol>
