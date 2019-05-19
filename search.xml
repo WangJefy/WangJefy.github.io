@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[动态组件&异步组件]]></title>
+    <url>%2F2019%2F05%2F19%2F%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6-%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[在动态组件上使用 keep-alive 我们之前曾经在一个多标签的界面中使用 is 特性来切换不同的组件： 1234567&lt;component v-bind:is="currentTabComponent"&gt;&lt;/component&gt;&lt;!-- currentTabComponent 为组件名 --&gt;&lt;!-- 改变 挂载的组件，只需要修改 is 指令的值即可 --&gt;&lt;!-- 动态切换掉的组件 是被移除掉了，如果把切换出去的组件保留在内存中，可以保留它的状态或避免重新渲染。为此添加了一个 keep-alive 指令参数 --&gt; 1actived 钩子：可以延迟执行 当前的组件]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Vue.js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[vue-devtools使用]]></title>
     <url>%2F2019%2F05%2F18%2Fvue-devtools%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[Console 总是打印 对象 使用 {} 将要打印的变量包围起来，即可打印变量值，又打印变量名 1234var greeting = "Hello"var name = "Vue"console.log(&#123; greeting, name &#125;)# &#123;greeting: "Hello", name: "Vue"&#125; 使用 console.table 打印多条数据 如果要打印的是一个数组，每个元素都是一个对象，建议使用 console.table 表格化打印数据 给 log 加点颜色]]></content>
